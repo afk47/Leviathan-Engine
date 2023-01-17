@@ -6,4 +6,8 @@
 	#else
 		#define RENGINE_API __declspec(dllimport)
 	#endif
+#else
+		#error Rengine only supports windows
 #endif
+
+#define BIT(x) (1 << x)

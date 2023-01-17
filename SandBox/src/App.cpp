@@ -1,6 +1,6 @@
 #include <REngine.h>
 
-class Sandbox : public RE::Application {
+class Sandbox : public REngine::Application {
 
 public:
 	Sandbox() {
@@ -12,6 +12,6 @@ public:
 };
 
 
-RE::Application* RE::CreateApplication(){
+REngine::Application* REngine::CreateApplication(){
 	return new Sandbox();
 }

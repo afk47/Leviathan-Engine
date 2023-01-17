@@ -1,6 +1,7 @@
 #include "Application.h"
+#include "Log.h"
 
-namespace RE {
+namespace REngine {
 
 	
 		Application::Application() {
@@ -13,6 +14,7 @@ namespace RE {
 
 		void Application::Run() {
 			
+
 			while (true);
 
 		}

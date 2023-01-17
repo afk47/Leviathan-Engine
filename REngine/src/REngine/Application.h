@@ -1,7 +1,7 @@
 #pragma once
 #include "Core.h"
 
-namespace RE{
+namespace REngine {
 
 	class RENGINE_API Application
 	{
