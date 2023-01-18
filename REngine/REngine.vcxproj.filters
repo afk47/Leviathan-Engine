@@ -4,6 +4,15 @@
     <Filter Include="REngine">
       <UniqueIdentifier>{4DD6DB54-B9B5-5AF0-C2CD-E5C62E2CC151}</UniqueIdentifier>
     </Filter>
+    <Filter Include="REngine\Events">
+      <UniqueIdentifier>{91C9B1D3-7D97-A5D9-662B-16005298813E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="REngine\Platform">
+      <UniqueIdentifier>{417968A3-2D72-87F5-56A4-6C7A42FC6601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="REngine\Platform\Windows">
+      <UniqueIdentifier>{7BD47776-67F9-C6F6-9044-AC867CC8C514}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\REngine.h" />
@@ -16,13 +25,28 @@
     <ClInclude Include="src\REngine\EntryPoint.h">
       <Filter>REngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\REngine\Events\ApplicationEvent.h">
+      <Filter>REngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Events\Event.h">
+      <Filter>REngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Events\KeyEvent.h">
+      <Filter>REngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Events\MouseEvent.h">
+      <Filter>REngine\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\REngine\Log.h">
       <Filter>REngine</Filter>
     </ClInclude>
-    <ClInclude Include="src\REngine\Events\Event.h" />
-    <ClInclude Include="src\REngine\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\REngine\Events\KeyEvent.h" />
-    <ClInclude Include="src\REngine\Events\MouseEvent.h" />
+    <ClInclude Include="src\REngine\Platform\Windows\WindowsWindow.h">
+      <Filter>REngine\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Window.h">
+      <Filter>REngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REngine\Application.cpp">
@@ -31,5 +55,9 @@
     <ClCompile Include="src\REngine\Log.cpp">
       <Filter>REngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\REngine\Platform\Windows\WindowsWindow.cpp">
+      <Filter>REngine\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\repch.cpp" />
   </ItemGroup>
 </Project>

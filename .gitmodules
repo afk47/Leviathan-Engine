@@ -1,3 +1,8 @@
 [submodule "REngine/vendor/spdlog"]
 	path = REngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+	branch = master
+[submodule "REngine/vendor/GLFW"]
+	path = REngine/vendor/GLFW
+	url = https://github.com/glfw/glfw
+	branch = latest

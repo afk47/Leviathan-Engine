@@ -1,10 +1,12 @@
 #pragma once
 
-#include "../Events/Event.h"
+#include "repch.h"
+#include "REngine/Events/Event.h"
+
 
 namespace REngine {
 
-	class WindowResizeEvent : public Event
+	class RENGINE_API WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
@@ -21,21 +23,21 @@ namespace REngine {
 		}
 
 		EVENT_CLASS_TYPE(WindowResize)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	private:
 		unsigned int m_Width, m_Height;
 	};
 
-	class WindowCloseEvent : public Event
+	class RENGINE_API WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent() = default;
 
 		EVENT_CLASS_TYPE(WindowClose)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class AppTickEvent : public Event
+	class RENGINE_API AppTickEvent : public Event
 	{
 	public:
 		AppTickEvent() = default;
@@ -44,7 +46,7 @@ namespace REngine {
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class AppUpdateEvent : public Event
+	class RENGINE_API AppUpdateEvent : public Event
 	{
 	public:
 		AppUpdateEvent() = default;
@@ -53,7 +55,7 @@ namespace REngine {
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class AppRenderEvent : public Event
+	class RENGINE_API AppRenderEvent : public Event
 	{
 	public:
 		AppRenderEvent() = default;

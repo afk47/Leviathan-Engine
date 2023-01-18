@@ -1,8 +1,8 @@
 #pragma once
 
+#include "repch.h"
 #include "Event.h"
 
-#include <sstream>
 
 namespace REngine {
 
@@ -24,13 +24,13 @@ namespace REngine {
 
 
 
-	class RENGINE_API KeyPressedEvent : KeyEvent
+	class RENGINE_API KeyPressedEvent : public KeyEvent
 	{
 	public: 
 		KeyPressedEvent(int keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
-		inline int GetReoeatCount() const { return m_RepeatCount; }
+		inline int GetRepeatCount() const { return m_RepeatCount; }
 
 		std::string ToString() const override
 		{

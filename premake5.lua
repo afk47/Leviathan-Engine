@@ -8,7 +8,13 @@ workspace "REngine"
 	"Dist"
 	}
 	
-	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include directories relative to solution directory
+IncludeDir = {}
+IncludeDir["GLFW"] = "REngine/vendor/GLFW/include"
+
+include "REngine/vendor/GLFW"
 	
 project "REngine"
 	location "REngine"
@@ -16,8 +22,12 @@ project "REngine"
 	language "C++"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
+	pchheader "repch.h"
+	pchsource "REngine/src/repch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -26,10 +36,18 @@ project "REngine"
 	
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
 	
 	}
 	
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
+	}
+
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
