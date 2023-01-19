@@ -6,3 +6,7 @@
 	path = REngine/vendor/GLFW
 	url = https://github.com/glfw/glfw
 	branch = latest
+[submodule "REngine/vendor/imgui"]
+	path = REngine/vendor/imgui
+	url = https://github.com/ocornut/imgui
+	branch = docking

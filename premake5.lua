@@ -13,9 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to solution directory
 IncludeDir = {}
 IncludeDir["GLFW"] = "REngine/vendor/GLFW/include"
-
+IncludeDir["Glad"] = "REngine/vendor/Glad/include"
 include "REngine/vendor/GLFW"
-	
+include "REngine/vendor/Glad"
+
 project "REngine"
 	location "REngine"
 	kind "SharedLib"
@@ -38,13 +39,14 @@ project "REngine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
-	
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 	
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -55,7 +57,8 @@ project "REngine"
 	
 		defines{
 		"RE_PLATFORM_WINDOWS",
-		"RE_BUILD_DLL"
+		"RE_BUILD_DLL",
+		"GLFW_INCLUDE_NONE"
 		}
 	
 	postbuildcommands
@@ -68,14 +71,17 @@ project "REngine"
 
 	filter "configurations:Debug"
 		defines "RE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "RE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 		
 	filter "configurations:Dist"
 		defines "RE_DIST"
+		buildoptions "/MD"
 		optimize "On"
 		
 	
@@ -120,13 +126,16 @@ project "SandBox"
 
 	filter "configurations:Debug"
 		defines "RE_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines "RE_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 		
 	filter "configurations:Dist"
 		defines "RE_DIST"
+		buildoptions "/MD"
 		optimize "On"
 		
