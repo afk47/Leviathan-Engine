@@ -1,12 +1,12 @@
 [submodule "REngine/vendor/spdlog"]
 	path = REngine/vendor/spdlog
-	url = https://github.com/gabime/spdlog
+	url = https://github.com/afk47/spdlog
 	branch = master
 [submodule "REngine/vendor/GLFW"]
 	path = REngine/vendor/GLFW
-	url = https://github.com/glfw/glfw
+	url = https://github.com/afk47/glfw
 	branch = latest
 [submodule "REngine/vendor/imgui"]
 	path = REngine/vendor/imgui
-	url = https://github.com/ocornut/imgui
+	url = https://github.com/afk47/imgui
 	branch = docking

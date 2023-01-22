@@ -10,12 +10,16 @@ workspace "REngine"
 	
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
--- Include directories relative to solution directory
+-- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "REngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "REngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "REngine/vendor/imgui"
+
+
 include "REngine/vendor/GLFW"
 include "REngine/vendor/Glad"
+include "REngine/vendor/imgui"
 
 project "REngine"
 	location "REngine"
@@ -40,14 +44,16 @@ project "REngine"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 	
 	links
 	{
+		"opengl32.lib",
 		"GLFW",
 		"Glad",
-		"opengl32.lib"
+		"ImGui"
 	}
 
 	filter "system:windows"

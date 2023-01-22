@@ -24,6 +24,7 @@ class Sandbox : public REngine::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
+		PushOverlay(new REngine::ImGuiLayer());
 	}
 	~Sandbox() {
 
