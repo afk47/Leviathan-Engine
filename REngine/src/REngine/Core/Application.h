@@ -3,13 +3,13 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "REngine/LayerStack.h"
+#include "REngine/Core/LayerStack.h"
 #include "REngine/Events/Event.h"
 #include "REngine/Events/ApplicationEvent.h"
 
 namespace REngine {
 
-	class RENGINE_API Application
+	class Application
 	{
 	public:
 		Application();

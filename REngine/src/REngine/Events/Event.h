@@ -1,7 +1,7 @@
 #pragma once
 
 #include "repch.h"
-#include "REngine/Core.h"
+#include "REngine/Core/Core.h"
 
 
 namespace REngine {
@@ -14,7 +14,7 @@ namespace REngine {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved,MouseScrolled,
 
 	};
@@ -37,7 +37,7 @@ namespace REngine {
 
 	
 	
-	class RENGINE_API Event
+	class   Event
 	{
 		friend class EventDispatcher;
 	public:

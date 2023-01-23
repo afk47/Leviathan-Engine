@@ -23,9 +23,11 @@ include "REngine/vendor/imgui"
 
 project "REngine"
 	location "REngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	
+	cppdialect "C++17"
+	staticruntime "on"
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -50,15 +52,14 @@ project "REngine"
 	
 	links
 	{
-		"opengl32.lib",
+		
 		"GLFW",
 		"Glad",
-		"ImGui"
+		"ImGui",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 	
 		defines{
@@ -67,36 +68,31 @@ project "REngine"
 		"GLFW_INCLUDE_NONE"
 		}
 	
-	postbuildcommands
-	{
-
-		("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/SandBox")
-
-	}
-
 
 	filter "configurations:Debug"
 		defines "RE_DEBUG"
 		buildoptions "/MDd"
-		symbols "On"
+		symbols "on"
 	
 	filter "configurations:Release"
 		defines "RE_RELEASE"
 		buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 		
 	filter "configurations:Dist"
 		defines "RE_DIST"
 		buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 		
 	
 project "SandBox"
 	location "SandBox"
 	kind "ConsoleApp"
-
 	language "C++"
-	
+	cppdialect "C++17"
+	staticruntime "on"
+
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
@@ -118,8 +114,6 @@ project "SandBox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 	
 		defines
@@ -133,15 +127,15 @@ project "SandBox"
 	filter "configurations:Debug"
 		defines "RE_DEBUG"
 		buildoptions "/MDd"
-		symbols "On"
+		symbols "on"
 	
 	filter "configurations:Release"
 		defines "RE_RELEASE"
 		buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 		
 	filter "configurations:Dist"
 		defines "RE_DIST"
 		buildoptions "/MD"
-		optimize "On"
+		optimize "on"
 		

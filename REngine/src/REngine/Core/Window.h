@@ -2,7 +2,7 @@
 
 #include "repch.h"
 
-#include "REngine/Core.h"
+#include "REngine/Core/Core.h"
 #include "REngine/Events/Event.h"
 
 namespace REngine {
@@ -20,7 +20,7 @@ namespace REngine {
 	};
 
 	//Interface representing desktop window
-	class RENGINE_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
@@ -36,6 +36,8 @@ namespace REngine {
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
+
+		virtual void* GetNativeWindow() const = 0;
 
 		static Window* Create(const WindowProps& props = WindowProps());
 

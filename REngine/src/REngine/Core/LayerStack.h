@@ -1,13 +1,13 @@
 #pragma once
 
-#include "REngine/Core.h"
+#include "REngine/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>
 
 namespace REngine {
 
-	class RENGINE_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

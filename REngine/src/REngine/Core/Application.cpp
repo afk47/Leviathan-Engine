@@ -1,10 +1,7 @@
 #include "repch.h"
 #include "Application.h"
 
-#include "REngine/Log.h"
-
-#include <GLFW/glfw3.h>
-#include <gl/GL.h>
+#include "REngine/Core/Log.h"
 
 namespace REngine {
 
@@ -55,7 +52,7 @@ namespace REngine {
 		while (m_Running)
 		{
 			
-			
+
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
@@ -68,5 +65,7 @@ namespace REngine {
 		m_Running = false;
 		return true;
 	}
+
+	
 
 }

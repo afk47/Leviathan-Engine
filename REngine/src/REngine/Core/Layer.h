@@ -1,11 +1,11 @@
 #pragma once
 
-#include "REngine/Core.h"
+#include "REngine/Core/Core.h"
 #include "REngine/Events/Event.h"
 
 namespace REngine {
 
-	class RENGINE_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");

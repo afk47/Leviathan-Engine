@@ -1,6 +1,6 @@
 #include "repch.h"
 #include "WindowsWindow.h"
-#include "REngine/Log.h"
+#include "REngine/Core/Log.h"
 
 #include "REngine/Events/ApplicationEvent.h"
 #include "REngine/Events/KeyEvent.h"
@@ -102,6 +102,14 @@ namespace REngine {
 				}
 			});
 
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(keycode);
+				data.EventCallback(event);
+
+			});
+
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -150,6 +158,8 @@ namespace REngine {
 	{
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
+
+		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

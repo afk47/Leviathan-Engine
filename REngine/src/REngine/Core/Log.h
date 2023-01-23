@@ -7,7 +7,7 @@
 namespace REngine {
 
 
-	class RENGINE_API Log
+	class Log
 	{
 	public:
 		

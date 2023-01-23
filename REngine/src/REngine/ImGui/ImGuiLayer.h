@@ -1,10 +1,13 @@
 #pragma once
 
-#include "REngine/Layer.h"
+#include "REngine/Core/Layer.h"
+#include "REngine/Events/MouseEvent.h"
+#include "REngine/Events/KeyEvent.h"
+#include "REngine/Events/ApplicationEvent.h"
 
 namespace REngine {
 
-	class RENGINE_API ImGuiLayer : public Layer
+	class ImGuiLayer : public Layer
 	{
 	public:
 		ImGuiLayer();
@@ -14,6 +17,17 @@ namespace REngine {
 		void OnDetach();
 		void OnUpdate();
 		void OnEvent(Event& event);
+	private:
+		bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
+		bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
+		bool OnMouseMovedEvent(MouseMovedEvent& e);
+		bool OnMouseScrolledEvent(MouseScrolledEvent& e);
+
+		bool OnKeyPressedEvent(KeyPressedEvent& e);
+		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
+		bool OnKeyTypedEvent(KeyTypedEvent& e);
+
+		bool OnWindowResizeEvent(WindowResizeEvent& e);
 	private:
 		float m_Time = 0.0f;
 	};

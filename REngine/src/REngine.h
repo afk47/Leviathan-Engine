@@ -1,10 +1,10 @@
 #pragma once
 
 //to be used by applications
-#include "REngine/Application.cpp"
-#include "REngine/Layer.h"
-#include "REngine/Log.h"
+#include "REngine/Core/Application.cpp"
+#include "REngine/Core/Layer.h"
+#include "REngine/Core/Log.h"
 #include "REngine/ImGui/ImGuiLayer.h"
 
 // EntryPoint
-#include "REngine/EntryPoint.h"
+#include "REngine/Core/EntryPoint.h"
