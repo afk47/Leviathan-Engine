@@ -6,7 +6,8 @@
 #include "REngine/Events/KeyEvent.h"
 #include "REngine/Events/MouseEvent.h"
 
-#include <glad/glad.h>
+#include "REngine/Platform/OpenGL/OpenGLContext.h"
+
 
 namespace REngine {
 
@@ -39,6 +40,8 @@ namespace REngine {
 		m_Data.Height = props.Height;
 
 		RE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		
+		
 
 		if (!s_GLFWInitialized)
 		{
@@ -50,14 +53,46 @@ namespace REngine {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		//Initialize Glad
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		RE_CORE_ASSERT(status, "Failed to initialize Glad")
+		
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
 		//Setting GLFW Callbacks
+		setGLFWCallbacks();
+	}
+	
+	
+	void WindowsWindow::Shutdown()
+	{
+		glfwDestroyWindow(m_Window);
+	}
+
+	void WindowsWindow::OnUpdate()
+	{
+		glfwPollEvents();
+		m_Context->SwapBuffers();
+	}
+
+	void WindowsWindow::SetVSync(bool enabled)
+	{
+		if (enabled)
+			glfwSwapInterval(1);
+		else
+			glfwSwapInterval(0);
+
+		m_Data.VSync = enabled;
+
+	}
+
+	bool WindowsWindow::IsVSync() const
+	{
+		return m_Data.VSync;
+	}
+
+	void WindowsWindow::setGLFWCallbacks() {
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -148,33 +183,5 @@ namespace REngine {
 			});
 
 		glfwSetErrorCallback(GLFWErrorCallback);
-	}
-	void WindowsWindow::Shutdown()
-	{
-		glfwDestroyWindow(m_Window);
-	}
-
-	void WindowsWindow::OnUpdate()
-	{
-		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
-
-		glClear(GL_COLOR_BUFFER_BIT);
-	}
-
-	void WindowsWindow::SetVSync(bool enabled)
-	{
-		if (enabled)
-			glfwSwapInterval(1);
-		else
-			glfwSwapInterval(0);
-
-		m_Data.VSync = enabled;
-
-	}
-
-	bool WindowsWindow::IsVSync() const
-	{
-		return m_Data.VSync;
 	}
 }

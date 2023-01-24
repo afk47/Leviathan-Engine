@@ -4,6 +4,12 @@
     <Filter Include="REngine">
       <UniqueIdentifier>{4DD6DB54-B9B5-5AF0-C2CD-E5C62E2CC151}</UniqueIdentifier>
     </Filter>
+    <Filter Include="REngine\Core">
+      <UniqueIdentifier>{C5F2C77C-B155-5721-5ADB-8FD7461D23A4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="REngine\Core\Input">
+      <UniqueIdentifier>{84E20FF3-70C6-D048-D926-CB9BC529BBCA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="REngine\Events">
       <UniqueIdentifier>{91C9B1D3-7D97-A5D9-662B-16005298813E}</UniqueIdentifier>
     </Filter>
@@ -13,9 +19,6 @@
     <Filter Include="REngine\Platform">
       <UniqueIdentifier>{417968A3-2D72-87F5-56A4-6C7A42FC6601}</UniqueIdentifier>
     </Filter>
-    <Filter Include="REngine\Platform\OpenGL">
-      <UniqueIdentifier>{550F1ABB-C146-6252-CA50-C6753607894B}</UniqueIdentifier>
-    </Filter>
     <Filter Include="REngine\Platform\Windows">
       <UniqueIdentifier>{7BD47776-67F9-C6F6-9044-AC867CC8C514}</UniqueIdentifier>
     </Filter>
@@ -23,13 +26,34 @@
   <ItemGroup>
     <ClInclude Include="src\REngine.h" />
     <ClInclude Include="src\REngine\Core\Application.h">
-      <Filter>REngine</Filter>
+      <Filter>REngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\REngine\Core\Core.h">
-      <Filter>REngine</Filter>
+      <Filter>REngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\REngine\Core\EntryPoint.h">
-      <Filter>REngine</Filter>
+      <Filter>REngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Core\Input\Input.h">
+      <Filter>REngine\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Core\Input\KeyCodes.h">
+      <Filter>REngine\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Core\Input\MouseCodes.h">
+      <Filter>REngine\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Core\Layer.h">
+      <Filter>REngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Core\LayerStack.h">
+      <Filter>REngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Core\Log.h">
+      <Filter>REngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Core\Window.h">
+      <Filter>REngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\REngine\Events\ApplicationEvent.h">
       <Filter>REngine\Events</Filter>
@@ -46,54 +70,42 @@
     <ClInclude Include="src\REngine\ImGui\ImGuiLayer.h">
       <Filter>REngine\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\REngine\Core\Layer.h">
-      <Filter>REngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\REngine\Core\LayerStack.h">
-      <Filter>REngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\REngine\Core\Log.h">
-      <Filter>REngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\REngine\Platform\OpenGL\ImGuiOpenGLRenderer.h">
-      <Filter>REngine\Platform\OpenGL</Filter>
+    <ClInclude Include="src\REngine\Platform\Windows\WindowsInput.h">
+      <Filter>REngine\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\REngine\Platform\Windows\WindowsWindow.h">
       <Filter>REngine\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\REngine\Core\Window.h">
-      <Filter>REngine</Filter>
-    </ClInclude>
     <ClInclude Include="src\repch.h" />
-    <ClInclude Include="src\REngine\Core\Input\KeyCodes.h" />
-    <ClInclude Include="src\REngine\Core\Input\MouseCodes.h" />
-    <ClInclude Include="src\REngine\Core\Input\Input.h" />
-    <ClInclude Include="src\REngine\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\REngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REngine\Core\Application.cpp">
-      <Filter>REngine</Filter>
+      <Filter>REngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Core\Layer.cpp">
+      <Filter>REngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Core\LayerStack.cpp">
+      <Filter>REngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Core\Log.cpp">
+      <Filter>REngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\ImGui\ImGuiBuild.cpp">
+      <Filter>REngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\REngine\ImGui\ImGuiLayer.cpp">
       <Filter>REngine\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\REngine\Core\Layer.cpp">
-      <Filter>REngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\REngine\Core\LayerStack.cpp">
-      <Filter>REngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\REngine\Core\Log.cpp">
-      <Filter>REngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\REngine\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
-      <Filter>REngine\Platform\OpenGL</Filter>
+    <ClCompile Include="src\REngine\Platform\Windows\WindowsInput.cpp">
+      <Filter>REngine\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\REngine\Platform\Windows\WindowsWindow.cpp">
       <Filter>REngine\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp" />
-    <ClCompile Include="src\REngine\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\REngine\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

@@ -14,6 +14,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "REngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "REngine/vendor/Glad/include"
+IncludeDir["glm"] = "REngine/vendor/glm/"
 IncludeDir["ImGui"] = "REngine/vendor/imgui"
 
 
@@ -41,13 +42,18 @@ project "REngine"
 		"%{prj.name}/src/**.cpp"
 	}
 	
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
 	includedirs
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 	
 	links
@@ -101,11 +107,15 @@ project "SandBox"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
 	}
+
+	
 	
 	includedirs
 	{
 		"REngine/vendor/spdlog/include",
-		"REngine/src"
+		"REngine/src",
+		"REngine/vendor",
+		"%{IncludeDir.glm}"
 	}
 	
 	links

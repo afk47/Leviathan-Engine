@@ -7,22 +7,22 @@ namespace REngine
 
 	namespace Mouse
 	{
-		enum : MouseCode
+		enum MouseCodes : MouseCode
 		{
 			// From glfw3.h
-			Button0 = 0,
-			Button1 = 1,
-			Button2 = 2,
-			Button3 = 3,
-			Button4 = 4,
-			Button5 = 5,
-			Button6 = 6,
-			Button7 = 7,
+			MouseButton0 = 0,
+			MouseButton1 = 1,
+			MouseButton2 = 2,
+			MouseButton3 = 3,
+			MouseButton4 = 4,
+			MouseButton5 = 5,
+			MouseButton6 = 6,
+			MouseButton7 = 7,
 
-			ButtonLast = Button7,
-			ButtonLeft = Button0,
-			ButtonRight = Button1,
-			ButtonMiddle = Button2
+			MouseButtonLast = MouseButton7,
+			MouseButtonLeft = MouseButton0,
+			MouseButtonRight = MouseButton1,
+			MouseButtonMiddle = MouseButton2
 		};
 	}
 }

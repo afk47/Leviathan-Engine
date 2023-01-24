@@ -1,7 +1,7 @@
 #pragma once
 
 #include "REngine/Core/Window.h"
-
+#include "REngine/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -25,10 +25,11 @@ namespace REngine {
 		inline virtual void* GetNativeWindow() const { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
+		void setGLFWCallbacks();
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
-
+		GraphicsContext* m_Context;
 		struct WindowData
 		{
 			std::string Title;

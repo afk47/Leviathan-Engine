@@ -76,8 +76,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>repch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_BUILD_DLL;GLFW_INCLUDE_NONE;RE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RE_PLATFORM_WINDOWS;RE_BUILD_DLL;GLFW_INCLUDE_NONE;RE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,8 +98,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>repch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_BUILD_DLL;GLFW_INCLUDE_NONE;RE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RE_PLATFORM_WINDOWS;RE_BUILD_DLL;GLFW_INCLUDE_NONE;RE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -124,8 +124,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>repch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_BUILD_DLL;GLFW_INCLUDE_NONE;RE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;RE_PLATFORM_WINDOWS;RE_BUILD_DLL;GLFW_INCLUDE_NONE;RE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -153,33 +153,34 @@
     <ClInclude Include="src\REngine\Core\Input\Input.h" />
     <ClInclude Include="src\REngine\Core\Input\KeyCodes.h" />
     <ClInclude Include="src\REngine\Core\Input\MouseCodes.h" />
+    <ClInclude Include="src\REngine\Core\Layer.h" />
+    <ClInclude Include="src\REngine\Core\LayerStack.h" />
+    <ClInclude Include="src\REngine\Core\Log.h" />
+    <ClInclude Include="src\REngine\Core\Window.h" />
     <ClInclude Include="src\REngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\REngine\Events\Event.h" />
     <ClInclude Include="src\REngine\Events\KeyEvent.h" />
     <ClInclude Include="src\REngine\Events\MouseEvent.h" />
     <ClInclude Include="src\REngine\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\REngine\Core\Layer.h" />
-    <ClInclude Include="src\REngine\Core\LayerStack.h" />
-    <ClInclude Include="src\REngine\Core\Log.h" />
-    <ClInclude Include="src\REngine\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
-    <ClInclude Include="src\REngine\Platform\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\REngine\Core\Window.h" />
-    <ClInclude Include="src\repch.h" />
+    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\REngine\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\REngine\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\REngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REngine\Core\Application.cpp" />
-    <ClCompile Include="src\REngine\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\REngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\REngine\Core\Layer.cpp" />
     <ClCompile Include="src\REngine\Core\LayerStack.cpp" />
     <ClCompile Include="src\REngine\Core\Log.cpp" />
-    <ClCompile Include="src\REngine\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\REngine\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\REngine\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\REngine\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\REngine\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\repch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\REngine\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
