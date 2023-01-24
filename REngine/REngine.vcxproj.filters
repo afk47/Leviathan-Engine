@@ -19,8 +19,14 @@
     <Filter Include="REngine\Platform">
       <UniqueIdentifier>{417968A3-2D72-87F5-56A4-6C7A42FC6601}</UniqueIdentifier>
     </Filter>
+    <Filter Include="REngine\Platform\OpenGL">
+      <UniqueIdentifier>{550F1ABB-C146-6252-CA50-C6753607894B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="REngine\Platform\Windows">
       <UniqueIdentifier>{7BD47776-67F9-C6F6-9044-AC867CC8C514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="REngine\Renderer">
+      <UniqueIdentifier>{9380457E-7F79-64D0-A8AB-4955940344DC}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -70,15 +76,31 @@
     <ClInclude Include="src\REngine\ImGui\ImGuiLayer.h">
       <Filter>REngine\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>REngine\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLContext.h">
+      <Filter>REngine\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\REngine\Platform\Windows\WindowsInput.h">
       <Filter>REngine\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\REngine\Platform\Windows\WindowsWindow.h">
       <Filter>REngine\Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\Buffer.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\GraphicsContext.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\Renderer.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\Shader.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\repch.h" />
-    <ClInclude Include="src\REngine\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REngine\Core\Application.cpp">
@@ -99,13 +121,27 @@
     <ClCompile Include="src\REngine\ImGui\ImGuiLayer.cpp">
       <Filter>REngine\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>REngine\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>REngine\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\REngine\Platform\Windows\WindowsInput.cpp">
       <Filter>REngine\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\REngine\Platform\Windows\WindowsWindow.cpp">
       <Filter>REngine\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\REngine\Renderer\Buffer.cpp">
+      <Filter>REngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Renderer\Renderer.cpp">
+      <Filter>REngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Renderer\Shader.cpp">
+      <Filter>REngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\repch.cpp" />
-    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

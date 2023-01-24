@@ -24,14 +24,11 @@ namespace REngine {
 		RE_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
 		RE_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
 
-		glClearColor(0.4f, .7f, .7f, 1);
 	}
 
 	void OpenGLContext::SwapBuffers()
 	{
-
 		glfwSwapBuffers(m_WindowHandle);
-		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
 }

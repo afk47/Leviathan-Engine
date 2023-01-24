@@ -115,6 +115,7 @@ project "SandBox"
 		"REngine/vendor/spdlog/include",
 		"REngine/src",
 		"REngine/vendor",
+		"%{IncludeDir.Glad}",
 		"%{IncludeDir.glm}"
 	}
 	

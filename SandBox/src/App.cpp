@@ -12,7 +12,8 @@ public:
 
 	void OnUpdate() override
 	{
-		RE_INFO("ExampleLayer::Update");
+		if (REngine::Input::IsKeyPressed(REngine::KeyCodes::Key_A))
+			RE_TRACE("A");
 	}
 
 	virtual void OnImGuiRender() override
