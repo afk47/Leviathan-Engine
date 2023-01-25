@@ -101,6 +101,8 @@
       <Filter>REngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\repch.h" />
+    <ClInclude Include="src\REngine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REngine\Core\Application.cpp">
@@ -143,5 +145,7 @@
       <Filter>REngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp" />
+    <ClCompile Include="src\REngine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>

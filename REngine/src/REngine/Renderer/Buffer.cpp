@@ -15,6 +15,8 @@ namespace REngine {
 		case RendererAPI::None: RE_CORE_ASSERT(false, "No Renderer API") return nullptr;
 		case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
+		RE_CORE_ASSERT(false, "Unknown RendererAPI!");
+		return nullptr;
 	}
 
 	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t size)
@@ -24,6 +26,8 @@ namespace REngine {
 		case RendererAPI::None: RE_CORE_ASSERT(false, "No Renderer API") return nullptr;
 		case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, size);
 		}
+		RE_CORE_ASSERT(false, "Unknown RendererAPI!");
+		return nullptr;
 	}
 
 }
