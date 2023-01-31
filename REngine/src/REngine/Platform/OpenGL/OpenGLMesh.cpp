@@ -1,5 +1,5 @@
 #include "repch.h"
-#include "OpenGLVertexArray.h"
+#include "OpenGLMesh.h"
 
 #include <glad/glad.h>
 
@@ -25,27 +25,27 @@ namespace REngine
 		return 0;
 	}
 
-	OpenGLVertexArray::OpenGLVertexArray()
+	OpenGLMesh::OpenGLMesh()
 	{
 		glCreateVertexArrays(1, &m_RendererID);
 	}
 
-	OpenGLVertexArray::~OpenGLVertexArray()
+	OpenGLMesh::~OpenGLMesh()
 	{
 		glDeleteVertexArrays(1, &m_RendererID);
 	}
 
-	void OpenGLVertexArray::Bind() const
+	void OpenGLMesh::Bind() const
 	{
 		glBindVertexArray(m_RendererID);
 	}
 
-	void OpenGLVertexArray::Unbind() const
+	void OpenGLMesh::Unbind() const
 	{
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+	void OpenGLMesh::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
 	{
 		RE_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout");
 		glBindVertexArray(m_RendererID);
@@ -64,10 +64,10 @@ namespace REngine
 				(const void*)element.Offset);
 			index++;
 		}
-		m_VertexBuffers.push_back(vertexBuffer);
+		m_VertexBuffer = vertexBuffer;
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
+	void OpenGLMesh::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
 	{
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();

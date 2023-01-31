@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Rengine/Renderer/Buffer.h"
-#include "REngine/Renderer/VertexArray.h"
+#include "REngine/Renderer/Mesh.h"
 #include <memory>
 
 namespace REngine {
 
-	class OpenGLVertexArray : public VertexArray
+	class OpenGLMesh : public Mesh
 	{
 	public:
-		OpenGLVertexArray();
-		virtual ~OpenGLVertexArray();
+		OpenGLMesh();
+		virtual ~OpenGLMesh();
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
@@ -19,7 +19,7 @@ namespace REngine {
 		virtual void SetIndexBuffer(const std::shared_ptr<IndexBuffer>& IndexBuffer) override;
 
 	private:
-		std::vector<std::shared_ptr<VertexBuffer>> m_VertexBuffers;
+		std::shared_ptr<VertexBuffer> m_VertexBuffers;
 		std::shared_ptr<IndexBuffer> m_IndexBuffer;
 		uint32_t m_RendererID;
 	};

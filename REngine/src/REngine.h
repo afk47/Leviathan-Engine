@@ -13,7 +13,7 @@
 //Layers
 #include "REngine/ImGui/ImGuiLayer.h"
 
-
+#define GLM_FORCE_CTOR_INIT
 
 // EntryPoint -----------------------
 #include "REngine/Core/EntryPoint.h"
