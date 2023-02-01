@@ -118,6 +118,9 @@
     <ClInclude Include="src\REngine\Renderer\Shader.h">
       <Filter>REngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\VertexArray.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +173,9 @@
       <Filter>REngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\REngine\Renderer\Shader.cpp">
+      <Filter>REngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Renderer\VertexArray.cpp">
       <Filter>REngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp" />
