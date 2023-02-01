@@ -28,6 +28,12 @@
     <Filter Include="REngine\Renderer">
       <UniqueIdentifier>{9380457E-7F79-64D0-A8AB-4955940344DC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="REngine\Scene">
+      <UniqueIdentifier>{2A09E116-96C9-5C4D-5F04-A6CACB83A129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="REngine\Scene\Entity">
+      <UniqueIdentifier>{36E2F64D-2271-8017-CB8F-9412B7FD90BD}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\REngine.h" />
@@ -88,9 +94,6 @@
     <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLMesh.h">
       <Filter>REngine\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLVertexArray.h">
-      <Filter>REngine\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\REngine\Platform\Windows\WindowsInput.h">
       <Filter>REngine\Platform\Windows</Filter>
     </ClInclude>
@@ -149,9 +152,6 @@
       <Filter>REngine\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLMesh.cpp">
-      <Filter>REngine\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>REngine\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\REngine\Platform\Windows\WindowsInput.cpp">

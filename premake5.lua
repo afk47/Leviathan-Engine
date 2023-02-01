@@ -16,6 +16,7 @@ IncludeDir["GLFW"] = "REngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "REngine/vendor/Glad/include"
 IncludeDir["glm"] = "REngine/vendor/glm/"
 IncludeDir["ImGui"] = "REngine/vendor/imgui"
+IncludeDir["entt"] = "REngine/vendor/entt"
 
 
 include "REngine/vendor/GLFW"
@@ -53,7 +54,8 @@ project "REngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 	
 	links

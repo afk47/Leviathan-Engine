@@ -11,7 +11,7 @@
 
 #include "REngine/Renderer/Shader.h"
 #include "REngine/Renderer/Buffer.h"
-#include "REngine/Renderer/VertexArray.h"
+#include "REngine/Renderer/Mesh.h"
 
 namespace REngine {
 
@@ -39,7 +39,7 @@ namespace REngine {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<VertexArray> m_VertexArray;
+		std::shared_ptr<Mesh> m_Mesh;
 		std::shared_ptr<Shader> m_Shader;
 		std::shared_ptr<VertexBuffer> m_VertexBuffer;
 		std::shared_ptr<IndexBuffer> m_IndexBuffer;

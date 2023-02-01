@@ -2,10 +2,6 @@
 	path = REngine/vendor/spdlog
 	url = https://github.com/afk47/spdlog
 	branch = master
-[submodule "REngine/vendor/GLFW"]
-	path = REngine/vendor/GLFW
-	url = https://github.com/afk47/glfw
-	branch = latest
 [submodule "REngine/vendor/ImGui"]
 	path = REngine/vendor/imgui
 	url = https://github.com/afk47/imgui
@@ -15,4 +11,7 @@
 	url = https://github.com/afk47/imgui
 [submodule "REngine/vendor/glm"]
 	path = REngine/vendor/glm
-	url = https://github.com/g-truc/glm
+	url = https://github.com/TheCherno/glm
+[submodule "REngine/vendor/GLFW"]
+	path = REngine/vendor/GLFW
+	url = https://github.com/afk47/glfw

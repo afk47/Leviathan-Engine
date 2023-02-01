@@ -24,7 +24,7 @@ namespace REngine {
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		m_VertexArray.reset(VertexArray::Create());
+		m_Mesh.reset(Mesh::Create());
 
 		float vertices[4 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
@@ -42,13 +42,13 @@ namespace REngine {
 		};
 
 		m_VertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(m_VertexBuffer);
+		m_Mesh->AddVertexBuffer(m_VertexBuffer);
 		
 
 
 		uint32_t indices[6] = { 0, 1, 2, 2, 3, 0};
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		m_VertexArray->SetIndexBuffer(m_IndexBuffer);
+		m_Mesh->SetIndexBuffer(m_IndexBuffer);
 
 		std::string vertexSrc = R"(
 			#version 330 core
@@ -117,7 +117,7 @@ namespace REngine {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
+			m_Mesh->Bind();
 			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 
