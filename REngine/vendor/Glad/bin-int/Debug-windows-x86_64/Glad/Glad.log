@@ -1,0 +1,3 @@
+﻿cl : command line warning D9025: overriding '/MTd' with '/MDd'
+  glad.c
+  Glad.vcxproj -> Z:\Documents\repos\REngine\REngine\vendor\Glad\bin\Debug-windows-x86_64\Glad\Glad.lib
