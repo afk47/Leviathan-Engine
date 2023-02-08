@@ -18,9 +18,7 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		ImGui::Begin("Test");
-		ImGui::Text("test");
-		ImGui::End();
+		
 	}
 
 	void OnEvent(REngine::Event& event) override
