@@ -1,17 +1,17 @@
 #include "repch.h"
-#include "VertexArray.h"
+#include "Mesh.h"
 
 #include "Renderer.h"
 #include "REngine/Platform/OpenGL/OpenGLVertexArray.h"
 
 namespace REngine {
 
-	VertexArray* VertexArray::Create()
+	Mesh* Mesh::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: RE_CORE_ASSERT(false, "RENDERAPI NOT SUPPORTED"); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLVertexArray();
+			case RendererAPI::API::None: RE_CORE_ASSERT(false, "RENDERAPI NOT SUPPORTED"); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLVertexArray();
 		}
 		RE_CORE_ASSERT(false, "RENDERAPI NOT SUPPORTED"); 
 		return nullptr;

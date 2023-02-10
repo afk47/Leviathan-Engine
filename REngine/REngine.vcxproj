@@ -164,14 +164,17 @@
     <ClInclude Include="src\REngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\REngine\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\REngine\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\REngine\Renderer\Buffer.h" />
     <ClInclude Include="src\REngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\REngine\Renderer\Renderer.h" />
+    <ClInclude Include="src\REngine\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\REngine\Renderer\RenderTask.h" />
     <ClInclude Include="src\REngine\Renderer\Shader.h" />
-    <ClInclude Include="src\REngine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\REngine\Renderer\Mesh.h" />
     <ClInclude Include="src\repch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -183,13 +186,16 @@
     <ClCompile Include="src\REngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\REngine\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\REngine\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\REngine\Renderer\Buffer.cpp" />
     <ClCompile Include="src\REngine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\REngine\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\REngine\Renderer\RenderTask.cpp" />
     <ClCompile Include="src\REngine\Renderer\Shader.cpp" />
-    <ClCompile Include="src\REngine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\REngine\Renderer\Mesh.cpp" />
     <ClCompile Include="src\repch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

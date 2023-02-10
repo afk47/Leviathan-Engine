@@ -103,10 +103,13 @@
     <ClInclude Include="src\REngine\Renderer\Shader.h">
       <Filter>REngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\REngine\Renderer\VertexArray.h">
+    <ClInclude Include="src\REngine\Renderer\Mesh.h">
       <Filter>REngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\repch.h" />
+    <ClInclude Include="src\REngine\Renderer\RenderTask.h" />
+    <ClInclude Include="src\REngine\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REngine\Core\Application.cpp">
@@ -151,9 +154,12 @@
     <ClCompile Include="src\REngine\Renderer\Shader.cpp">
       <Filter>REngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\REngine\Renderer\VertexArray.cpp">
+    <ClCompile Include="src\REngine\Renderer\Mesh.cpp">
       <Filter>REngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp" />
+    <ClCompile Include="src\REngine\Renderer\RenderTask.cpp" />
+    <ClCompile Include="src\REngine\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>

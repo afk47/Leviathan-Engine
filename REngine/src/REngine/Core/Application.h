@@ -11,7 +11,8 @@
 
 #include "REngine/Renderer/Shader.h"
 #include "REngine/Renderer/Buffer.h"
-#include "REngine/Renderer/VertexArray.h"
+#include "REngine/Renderer/Mesh.h"
+#include "REngine/Renderer/Renderer.h"
 
 namespace REngine {
 
@@ -34,16 +35,12 @@ namespace REngine {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
-		std::unique_ptr<Window> m_Window;
+		Unique<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexBuffer> m_VertexBuffer;
-		std::shared_ptr<IndexBuffer> m_IndexBuffer;
-
+		Unique<RendererAPI> m_RenderAPI;
 	private:
 		static Application* s_Instance;
 	};

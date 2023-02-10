@@ -1,19 +1,21 @@
 #pragma once
+#include "RenderTask.h"
 
+#include "Shader.h"
 namespace REngine {
 
-	enum class RendererAPI
-	{
-		None = 0, 
-		OpenGL
-	};
+
 
 	class Renderer 
 	{
 	public:
-		inline static RendererAPI GetAPI() { return s_RendererAPI; }
-	private:
-		static RendererAPI s_RendererAPI;
+		static void BeginScene();
+		static void EndScene();
+
+		static void Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<Mesh>& mesh);
+
+		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
+	
 	};
 
 }

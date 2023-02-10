@@ -5,6 +5,7 @@
 
 namespace REngine {
 
+	
 	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
 		// Create an empty vertex shader handle

@@ -25,7 +25,7 @@ namespace REngine {
 }
 
 //CORE LOG MACROS
-#define RE_CORE_FATAL(...)	::REngine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define RE_CORE_FATAL(...)	::REngine::Log::GetCoreLogger()->critical(__VA_ARGS__)
 #define RE_CORE_ERROR(...)	::REngine::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define RE_CORE_WARN(...)	::REngine::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define RE_CORE_INFO(...)	::REngine::Log::GetCoreLogger()->info(__VA_ARGS__)

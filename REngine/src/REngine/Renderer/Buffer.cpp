@@ -12,8 +12,8 @@ namespace REngine {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: RE_CORE_ASSERT(false, "No Renderer API") return nullptr;
-		case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
+		case RendererAPI::API::None: RE_CORE_ASSERT(false, "No Renderer API") return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
 		RE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
@@ -23,8 +23,8 @@ namespace REngine {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None: RE_CORE_ASSERT(false, "No Renderer API") return nullptr;
-		case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, size);
+		case RendererAPI::API::None: RE_CORE_ASSERT(false, "No Renderer API") return nullptr;
+		case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, size);
 		}
 		RE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;

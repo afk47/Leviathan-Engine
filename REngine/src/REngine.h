@@ -4,6 +4,7 @@
 #include "REngine/Core/Application.cpp"
 #include "REngine/Core/Layer.h"
 #include "REngine/Core/Log.h"
+#include "REngine/Core/Core.h"
 
 //Input
 #include "REngine/Core/Input/Input.h"
