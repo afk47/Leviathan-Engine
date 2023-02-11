@@ -28,6 +28,9 @@
     <Filter Include="REngine\Renderer">
       <UniqueIdentifier>{9380457E-7F79-64D0-A8AB-4955940344DC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="REngine\Scene">
+      <UniqueIdentifier>{2A09E116-96C9-5C4D-5F04-A6CACB83A129}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\REngine.h" />
@@ -82,6 +85,9 @@
     <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLContext.h">
       <Filter>REngine\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>REngine\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>REngine\Platform\OpenGL</Filter>
     </ClInclude>
@@ -97,19 +103,34 @@
     <ClInclude Include="src\REngine\Renderer\GraphicsContext.h">
       <Filter>REngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\REngine\Renderer\Renderer.h">
-      <Filter>REngine\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\REngine\Renderer\Shader.h">
+    <ClInclude Include="src\REngine\Renderer\Material.h">
       <Filter>REngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\REngine\Renderer\Mesh.h">
       <Filter>REngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\RenderTask.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\Renderer.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\RendererAPI.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Renderer\Shader.h">
+      <Filter>REngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Scene\Component.h">
+      <Filter>REngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Scene\Entity.h">
+      <Filter>REngine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\REngine\Scene\Scene.h">
+      <Filter>REngine\Scene</Filter>
+    </ClInclude>
     <ClInclude Include="src\repch.h" />
-    <ClInclude Include="src\REngine\Renderer\RenderTask.h" />
-    <ClInclude Include="src\REngine\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\REngine\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REngine\Core\Application.cpp">
@@ -136,6 +157,9 @@
     <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>REngine\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>REngine\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>REngine\Platform\OpenGL</Filter>
     </ClCompile>
@@ -148,18 +172,24 @@
     <ClCompile Include="src\REngine\Renderer\Buffer.cpp">
       <Filter>REngine\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\REngine\Renderer\Mesh.cpp">
+      <Filter>REngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Renderer\RenderTask.cpp">
+      <Filter>REngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\REngine\Renderer\Renderer.cpp">
+      <Filter>REngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\REngine\Renderer\RendererAPI.cpp">
       <Filter>REngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\REngine\Renderer\Shader.cpp">
       <Filter>REngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\REngine\Renderer\Mesh.cpp">
-      <Filter>REngine\Renderer</Filter>
+    <ClCompile Include="src\REngine\Scene\Scene.cpp">
+      <Filter>REngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp" />
-    <ClCompile Include="src\REngine\Renderer\RenderTask.cpp" />
-    <ClCompile Include="src\REngine\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\REngine\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>

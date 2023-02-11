@@ -14,7 +14,10 @@
 //Layers
 #include "REngine/ImGui/ImGuiLayer.h"
 
-
+//Scene
+#include "REngine/Scene/Scene.h"
+#include "REngine/Scene/Entity.h"
+#include "REngine/Scene/Component.h"
 
 // EntryPoint -----------------------
 #include "REngine/Core/EntryPoint.h"

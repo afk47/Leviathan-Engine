@@ -61,13 +61,18 @@ public:
 
 		m_Shader.reset(new REngine::Shader(vertexSrc, fragmentSrc));
 		
-	}
+		REngine::Entity entity = m_Scene->CreateEntity();
+		{
+			REngine::MeshComponent mesh = REngine::MeshComponent();
+			mesh.mesh = m_Mesh;
+			mesh.shader = m_Shader;
+			entity.AddComponent<REngine::MeshComponent>(mesh);
+		}
+		}
 
 	void OnUpdate() override
 	{
-		REngine::Renderer::BeginScene();
-		REngine::Renderer::Submit(m_Shader, m_Mesh);
-		REngine::Renderer::EndScene();
+		m_Scene->OnUpdate();
 	}
 
 	virtual void OnImGuiRender() override
@@ -82,6 +87,7 @@ public:
 private:
 	std::shared_ptr<REngine::Shader> m_Shader;
 	std::shared_ptr<REngine::Mesh> m_Mesh;
+	REngine::Scene* m_Scene = new REngine::Scene();
 	glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 };
 

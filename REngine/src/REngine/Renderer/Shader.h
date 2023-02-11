@@ -7,7 +7,7 @@ namespace REngine {
 	class Shader
 	{
 	public:
-		Shader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		Shader(const std::string& vertexSrc = std::string(), const std::string& fragmentSrc = std::string());
 		~Shader();
 
 		void Bind() const;
