@@ -1,10 +1,14 @@
 # REngine
 C++ Game Engine
 
-Basic Game Engine using openGL
+Game Engine using OpenGL
 
 Setting up - 
 
 Edit generateprojects.bat with your version of visual studio or other IDE (see premake5 instructions for more information )
 
-Then Run generateProjects.bat and premake will regenerate the solution files for your version of visual studio you are using
+Then run generateProjects.bat and premake will generate the solution files for your version of visual studio
+
+Set the startup project to SandBox and then press the Local Windows Debugger button (F5)
+
+
