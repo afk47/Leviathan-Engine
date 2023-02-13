@@ -131,6 +131,7 @@
       <Filter>REngine\Scene</Filter>
     </ClInclude>
     <ClInclude Include="src\repch.h" />
+    <ClInclude Include="src\REngine\Scene\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\REngine\Core\Application.cpp">
@@ -191,5 +192,7 @@
       <Filter>REngine\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\repch.cpp" />
+    <ClCompile Include="src\REngine\Renderer\Material.cpp" />
+    <ClCompile Include="src\REngine\Scene\Camera.cpp" />
   </ItemGroup>
 </Project>

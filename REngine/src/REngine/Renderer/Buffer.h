@@ -1,21 +1,15 @@
 #pragma once
+#include "Shader.h"
 
 namespace REngine {
 
-	enum class ShaderDataType
-	{
-		None = 0, 
-		Vec, Vec2, Vec3, Vec4, 
-		Mat3, Mat4,
-		Int, Int2, Int3, Int4,
-		Bool
-	};
+	
 
 	static uint32_t ShaderDataTypeSize(ShaderDataType type)
 	{
 		switch (type)
 		{
-			case ShaderDataType::Vec:	return 4;
+			case ShaderDataType::Float:	return 4;
 			case ShaderDataType::Vec2:	return 4 * 2;
 			case ShaderDataType::Vec3:	return 4 * 3;
 			case ShaderDataType::Vec4:	return 4 * 4;
@@ -49,7 +43,7 @@ namespace REngine {
 		{
 			switch (Type)
 			{
-			case ShaderDataType::Vec:	return 1;
+			case ShaderDataType::Float:	return 1;
 			case ShaderDataType::Vec2:	return 2;
 			case ShaderDataType::Vec3:	return 3;
 			case ShaderDataType::Vec4:	return 4;

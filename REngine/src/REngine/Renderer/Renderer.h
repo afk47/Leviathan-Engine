@@ -1,7 +1,6 @@
 #pragma once
 #include "RenderTask.h"
-
-#include "Shader.h"
+#include "Material.h"
 namespace REngine {
 
 
@@ -12,7 +11,7 @@ namespace REngine {
 		static void BeginScene();
 		static void EndScene();
 
-		static void Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<Mesh>& mesh);
+		static void Submit(const Ref<Material>& material, const Ref<Mesh>& mesh);
 
 		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	

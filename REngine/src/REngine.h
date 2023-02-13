@@ -19,5 +19,11 @@
 #include "REngine/Scene/Entity.h"
 #include "REngine/Scene/Component.h"
 
+#include "REngine/Renderer/Material.h"
+
+//Math
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 // EntryPoint -----------------------
 #include "REngine/Core/EntryPoint.h"

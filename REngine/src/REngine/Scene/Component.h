@@ -3,8 +3,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "Scene.h"
-#include "REngine/Renderer/Shader.h"
 #include "REngine/Renderer/Mesh.h"
+#include "REngine/Renderer/Material.h"
 
 namespace REngine {
 
@@ -50,12 +50,12 @@ namespace REngine {
 	struct MeshComponent // Mesh component (required for renderable)
 	{
 		Ref<Mesh> mesh;
-		Ref<Shader> shader;
+		Ref<Material> material;
 
 		MeshComponent()
 		{
 			mesh.reset(Mesh::Create());
-			shader.reset(new Shader());
+			material.reset(new Material());
 		}
 		
 	};

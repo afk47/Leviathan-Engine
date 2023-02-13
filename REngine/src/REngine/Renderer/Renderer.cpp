@@ -12,9 +12,9 @@ namespace REngine {
 	{
 	}
 
-	void Renderer::Submit(const std::shared_ptr<Shader>& shader, const std::shared_ptr<Mesh>& mesh)
+	void Renderer::Submit(const Ref<Material>& material, const Ref<Mesh>& mesh)
 	{
-		shader->Bind();
+		material->Bind();
 		mesh->Bind();
 		RenderTask::DrawIndexed(mesh);
 	}

@@ -9,8 +9,8 @@ namespace REngine
 	{
 		switch (type)
 		{
+		case ShaderDataType::Float:	return GL_FLOAT;
 		case ShaderDataType::Vec2:	return GL_FLOAT;
-		case ShaderDataType::Vec:	return GL_FLOAT;
 		case ShaderDataType::Vec3:	return GL_FLOAT;
 		case ShaderDataType::Vec4:	return GL_FLOAT;
 		case ShaderDataType::Mat3:	return GL_FLOAT;

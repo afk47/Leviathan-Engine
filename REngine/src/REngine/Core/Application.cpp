@@ -24,6 +24,7 @@ namespace REngine {
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 		m_RenderAPI = RendererAPI::Create();
+		m_RenderAPI->Init();
 	}
 
 	Application::~Application()
@@ -67,6 +68,7 @@ namespace REngine {
 				layer->OnUpdate();
 
 			m_ImGuiLayer->Begin();
+			
 			for (Layer* layer : m_LayerStack)
 				layer->OnImGuiRender();
 			m_ImGuiLayer->End();

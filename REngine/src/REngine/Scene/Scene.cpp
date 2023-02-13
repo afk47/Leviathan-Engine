@@ -10,7 +10,8 @@
 
 namespace REngine {
 
-	Scene::Scene() {
+	Scene::Scene()
+	{
 
 	}
 
@@ -26,6 +27,7 @@ namespace REngine {
 		return entity;
 	}
 
+
 	void Scene::DestroyEntity(Entity entity) {
 		m_Registry.destroy(entity);
 	}
@@ -36,11 +38,13 @@ namespace REngine {
 			Renderer::BeginScene();
 
 			auto group = m_Registry.group<TransformComponent>(entt::get<MeshComponent>);
+			m_Camera->OnUpdate();
 			for (auto entity : group)
 			{
 				auto [transform, meshcomp] = group.get<TransformComponent, MeshComponent>(entity);
-
-				Renderer::Submit(meshcomp.shader, meshcomp.mesh);
+				meshcomp.material->Set("transformMatrix", transform.GetTransform());
+				meshcomp.material->Set("projectionMatrix", m_Camera->GetProjectionMatrix());
+				Renderer::Submit(meshcomp.material, meshcomp.mesh);
 			}
 			Renderer::EndScene();
 		}
