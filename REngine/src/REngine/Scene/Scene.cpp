@@ -43,7 +43,7 @@ namespace REngine {
 			{
 				auto [transform, meshcomp] = group.get<TransformComponent, MeshComponent>(entity);
 				meshcomp.material->Set("transformMatrix", transform.GetTransform());
-				meshcomp.material->Set("projectionMatrix", m_Camera->GetProjectionMatrix());
+				meshcomp.material->Set("projectionMatrix", m_Camera->GetViewProjectionMatrix());
 				Renderer::Submit(meshcomp.material, meshcomp.mesh);
 			}
 			Renderer::EndScene();

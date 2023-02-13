@@ -12,7 +12,7 @@ namespace REngine {
 
 		Entity CreateEntity(const std::string & = std::string());
 		void DestroyEntity(Entity entity);
-		void SetCamera(PerspectiveCamera& camera) { m_Camera = &camera; }
+		void SetCamera(PerspectiveCamera *camera) { m_Camera = camera; }
 		void OnUpdate();
 		void OnViewportResize(uint32_t width, uint32_t height);
 	private:

@@ -93,7 +93,8 @@
 
 		m_Shader.reset(new REngine::Shader(vertexSrc, fragmentSrc));
 		m_Camera = new REngine::PerspectiveCamera(90.0f, 16 / 9, .001f, 9999.9f);
-		m_Scene->SetCamera(*m_Camera);
+		
+		m_Scene->SetCamera(m_Camera);
 		entity = m_Scene->CreateEntity();
 		{
 			REngine::MeshComponent mesh = REngine::MeshComponent();
@@ -106,6 +107,8 @@
 
 	void OnUpdate() override
 	{
+		m_Camera->SetPosition(cam_Position);
+		m_Camera->SetRotation(cam_Rotation);
 		entity.GetComponent<REngine::TransformComponent>().Rotation = m_Rotation;
 		entity.GetComponent<REngine::TransformComponent>().Translation = m_Position;
 		entity.GetComponent<REngine::TransformComponent>().Scale = m_Scale;
@@ -118,6 +121,11 @@
 		ImGui::SliderFloat3("Rotation", glm::value_ptr(m_Rotation), 0.1f, 6.28f);
 		ImGui::SliderFloat3("Position", glm::value_ptr(m_Position), -5.0f, 5.0f);
 		ImGui::SliderFloat3("Scale", glm::value_ptr(m_Scale), 0.1f, 5.0f);
+
+		ImGui::Begin("Camera");
+		ImGui::SliderFloat3("Position", glm::value_ptr(cam_Position), -9.0f, 9.0f);
+		ImGui::SliderFloat3("Rotation", glm::value_ptr(cam_Rotation), 0.1f, 9.0f);
+		ImGui::End();
 		ImGui::End();
 	}
 
@@ -127,6 +135,9 @@
 	}
 	private:
 	REngine::PerspectiveCamera* m_Camera;
+	
+	glm::vec3 cam_Position = { 0.0f, 0.0f, 0.0f };
+	glm::vec3 cam_Rotation = { 0.0f, 0.0f, 0.0f };
 	REngine::Entity entity;
 	std::shared_ptr<REngine::Shader> m_Shader;
 	std::shared_ptr<REngine::Mesh> m_Mesh;
