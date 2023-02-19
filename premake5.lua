@@ -1,4 +1,4 @@
-workspace "REngine"
+workspace "Leviathan"
 	architecture "x64"
 	
 	configurations
@@ -12,23 +12,23 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "REngine/vendor/GLFW/include"
-IncludeDir["Glad"] = "REngine/vendor/Glad/include"
-IncludeDir["glm"] = "REngine/vendor/glm/"
-IncludeDir["ImGui"] = "REngine/vendor/imgui"
-IncludeDir["entt"] = "REngine/vendor/entt/include"
-IncludeDir["stb_image"] = "REngine/vendor/stb_image"
+IncludeDir["GLFW"] = "Leviathan/vendor/GLFW/include"
+IncludeDir["Glad"] = "Leviathan/vendor/Glad/include"
+IncludeDir["glm"] = "Leviathan/vendor/glm/"
+IncludeDir["ImGui"] = "Leviathan/vendor/imgui"
+IncludeDir["entt"] = "Leviathan/vendor/entt/include"
+IncludeDir["stb_image"] = "Leviathan/vendor/stb_image"
 
 
 group "Dependencies"
-	include "REngine/vendor/GLFW"
-	include "REngine/vendor/Glad"
-	include "REngine/vendor/imgui"
+	include "Leviathan/vendor/GLFW"
+	include "Leviathan/vendor/Glad"
+	include "Leviathan/vendor/imgui"
 
 group ""
 
-project "REngine"
-	location "REngine"
+project "Leviathan"
+	location "Leviathan"
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
@@ -38,8 +38,8 @@ project "REngine"
 
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
-	pchheader "repch.h"
-	pchsource "REngine/src/repch.cpp"
+	pchheader "lpch.h"
+	pchsource "Leviathan/src/lpch.cpp"
 
 	files
 	{
@@ -80,7 +80,6 @@ project "REngine"
 		systemversion "latest"
 	
 		defines{
-		"RE_PLATFORM_WINDOWS",
 		"RE_BUILD_DLL",
 		"GLFW_INCLUDE_NONE"
 		}
@@ -123,9 +122,9 @@ project "SandBox"
 	
 	includedirs
 	{
-		"REngine/vendor/spdlog/include",
-		"REngine/src",
-		"REngine/vendor",
+		"Leviathan/vendor/spdlog/include",
+		"Leviathan/src",
+		"Leviathan/vendor",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
@@ -134,7 +133,7 @@ project "SandBox"
 	
 	links
 	{
-		"REngine"
+		"Leviathan"
 	}
 
 	filter "system:windows"

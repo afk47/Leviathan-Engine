@@ -1,14 +1,14 @@
-	#include <REngine.h>
+	#include <Leviathan.h>
 
 	#include "imgui/imgui.h"
 
-	class ExampleLayer : public REngine::Layer
+	class ExampleLayer : public Leviathan::Layer
 	{
 	public:
 	ExampleLayer()
 		: Layer("Example")
 	{
-		m_Mesh.reset(REngine::Mesh::Create());
+		m_Mesh.reset(Leviathan::Mesh::Create());
 
 		float vertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -17,17 +17,17 @@
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		std::shared_ptr<REngine::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(REngine::VertexBuffer::Create(vertices, sizeof(vertices)));
-		REngine::BufferLayout layout = {
-			{ REngine::ShaderDataType::Vec3, "a_Position" },
-			{ REngine::ShaderDataType::Vec2, "a_TexCoord" }
+		std::shared_ptr<Leviathan::VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(Leviathan::VertexBuffer::Create(vertices, sizeof(vertices)));
+		Leviathan::BufferLayout layout = {
+			{ Leviathan::ShaderDataType::Vec3, "a_Position" },
+			{ Leviathan::ShaderDataType::Vec2, "a_TexCoord" }
 		};
 		vertexBuffer->SetLayout(layout);
 		m_Mesh->AddVertexBuffer(vertexBuffer);
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<REngine::IndexBuffer> squareIB;
-		squareIB.reset(REngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		std::shared_ptr<Leviathan::IndexBuffer> squareIB;
+		squareIB.reset(Leviathan::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_Mesh->SetIndexBuffer(squareIB);
 
 		//Create shaders
@@ -71,23 +71,23 @@
 			}
 		)";
 
-		m_Shader.reset(REngine::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader.reset(Leviathan::Shader::Create(vertexSrc, fragmentSrc));
 
-		m_Texture = std::make_shared<REngine::Texture>("assets/textures/default.png");
+		m_Texture = std::make_shared<Leviathan::Texture>("assets/textures/default.png");
 		
-		m_Camera = new REngine::PerspectiveCamera(90.0f, 16 / 9, .001f, 9999.9f);
+		m_Camera = new Leviathan::PerspectiveCamera(90.0f, 16 / 9, .001f, 9999.9f);
 		m_Scene->SetCamera(m_Camera);
 		entity = m_Scene->CreateEntity();
 		{
-			REngine::MeshComponent mesh = REngine::MeshComponent();
+			Leviathan::MeshComponent mesh = Leviathan::MeshComponent();
 			mesh.mesh = m_Mesh;
 			mesh.material->SetShader(m_Shader);
 			mesh.material->Bind();
 			mesh.material->Set("u_Texture", 0);
 			mesh.material->SetTexture(m_Texture);
-			entity.AddComponent<REngine::MeshComponent>(mesh);
+			entity.AddComponent<Leviathan::MeshComponent>(mesh);
 		}
-		entity.GetComponent<REngine::TransformComponent>().Rotation = m_Rotation;
+		entity.GetComponent<Leviathan::TransformComponent>().Rotation = m_Rotation;
 		
 		
 		}
@@ -96,9 +96,9 @@
 	{
 		m_Camera->SetPosition(cam_Position);
 		m_Camera->SetRotation(cam_Rotation);
-		entity.GetComponent<REngine::TransformComponent>().Rotation = m_Rotation;
-		entity.GetComponent<REngine::TransformComponent>().Translation = m_Position;
-		entity.GetComponent<REngine::TransformComponent>().Scale = m_Scale;
+		entity.GetComponent<Leviathan::TransformComponent>().Rotation = m_Rotation;
+		entity.GetComponent<Leviathan::TransformComponent>().Translation = m_Position;
+		entity.GetComponent<Leviathan::TransformComponent>().Scale = m_Scale;
 		m_Scene->OnUpdate();
 	}
 
@@ -116,22 +116,22 @@
 		ImGui::End();
 	}
 
-	void OnEvent(REngine::Event& event) override
+	void OnEvent(Leviathan::Event& event) override
 	{
 		RE_TRACE("{0}", event);
 	}
 	private:
-	REngine::PerspectiveCamera* m_Camera;
+	Leviathan::PerspectiveCamera* m_Camera;
 	glm::vec3 cam_Position = { 0.0f, 0.0f, 0.0f };
 	glm::vec3 cam_Rotation = { 0.0f, 0.0f, 0.0f };
 
-	REngine::Scene* m_Scene = new REngine::Scene();
-	REngine::Entity entity;
-	REngine::Entity cameraentity;
+	Leviathan::Scene* m_Scene = new Leviathan::Scene();
+	Leviathan::Entity entity;
+	Leviathan::Entity cameraentity;
 
-	std::shared_ptr<REngine::Shader> m_Shader;
-	std::shared_ptr<REngine::Mesh> m_Mesh;
-	std::shared_ptr<REngine::Texture> m_Texture;
+	std::shared_ptr<Leviathan::Shader> m_Shader;
+	std::shared_ptr<Leviathan::Mesh> m_Mesh;
+	std::shared_ptr<Leviathan::Texture> m_Texture;
 
 	glm::vec3 m_Rotation = { 0.0f, 0.0f, 0.0f };
 	glm::vec3 m_Position = { 0.0f, 0.0f, 0.0f };
@@ -140,7 +140,7 @@
 
 
 
-	class Sandbox : public REngine::Application {
+	class Sandbox : public Leviathan::Application {
 
 	public:
 	Sandbox() {
@@ -152,6 +152,6 @@
 	};
 
 
-	REngine::Application* REngine::CreateApplication(){
+	Leviathan::Application* Leviathan::CreateApplication(){
 	return new Sandbox();
 	}

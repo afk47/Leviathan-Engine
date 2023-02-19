@@ -1,4 +1,4 @@
-# REngine
+# Leviathan Engine
 C++ Game Engine
 
 Game Engine using OpenGL
