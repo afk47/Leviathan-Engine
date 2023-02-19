@@ -3,10 +3,10 @@
 #include <vector>
 #include "REngine/Core/Core.h"
 #include "Shader.h"
+#include "Texture.h"
 
 namespace REngine {
 
-	class Texture;
 
 	class Material {
 	public:
@@ -19,7 +19,7 @@ namespace REngine {
 		inline virtual Ref<Shader> GetShader() { return m_Shader; }
 		inline virtual Ref<Texture> GetTexture() { return m_Texture; }
 
-		inline virtual bool HasTexture() { return m_Texture == nullptr; }
+		inline virtual bool HasTexture() const { return m_Texture != nullptr; }
 		
 		virtual void Bind();
 		virtual void UnBind();
@@ -39,12 +39,8 @@ namespace REngine {
 		Ref<Texture> m_Texture;
 	};
 
-	
 
 	class MaterialRef : Ref<Material>{};
 
-	class Texture { //basic image class
-		
-		
-	};
+	
 }

@@ -17,23 +17,22 @@ namespace REngine {
 	class Shader
 	{
 	public:
-		Shader(const std::string& vertexSrc = std::string(), const std::string& fragmentSrc = std::string());
-		~Shader();
+		virtual ~Shader() = default;
 
-		void Bind() const;
-		void Unbind() const;
-		template<typename T> void Set(const std::string& name, T uniform, ShaderDataType type);
-		virtual void SetInt(const std::string& name, int value);
-		virtual void SetIntArray(const std::string& name, int* values, uint32_t count);
-		virtual void SetFloat(const std::string& name, float value);
-		virtual void SetVec2(const std::string& name, const glm::vec2& value);
-		virtual void SetVec3(const std::string& name, const glm::vec3& value);
-		virtual void SetVec4(const std::string& name, const glm::vec4& value);
-		virtual void SetMat3(const std::string& name, const glm::mat3& value);
-		virtual void SetMat4(const std::string& name, const glm::mat4& value);
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
-	private:
-		uint32_t m_ShaderID;
+
+		virtual void SetInt(const std::string& name, int value) = 0;
+		virtual void SetIntArray(const std::string& name, int* values, uint32_t count) = 0;
+		virtual void SetFloat(const std::string& name, float value) = 0;
+		virtual void SetVec2(const std::string& name, const glm::vec2& value) = 0;
+		virtual void SetVec3(const std::string& name, const glm::vec3& value) = 0;
+		virtual void SetVec4(const std::string& name, const glm::vec4& value) = 0;
+		virtual void SetMat3(const std::string& name, const glm::mat3& value) = 0;
+		virtual void SetMat4(const std::string& name, const glm::mat4& value) = 0;
+
+		static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
 	};
 
 	

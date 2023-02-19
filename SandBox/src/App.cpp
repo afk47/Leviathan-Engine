@@ -10,49 +10,22 @@
 	{
 		m_Mesh.reset(REngine::Mesh::Create());
 
-		float vertices[3 * 8] = {
-		 -1, -1,  0.5, //0
-		 1, -1,  0.5, //1
-		-1,  1,  0.5, //2
-		 1,  1,  0.5, //3
-		-1, -1, -0.5, //4
-		 1, -1, -0.5, //5
-		-1,  1, -0.5, //6
-		 1,  1, -0.5  //7
+		float vertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		std::shared_ptr<REngine::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(REngine::VertexBuffer::Create(vertices, sizeof(vertices)));
 		REngine::BufferLayout layout = {
-			{ REngine::ShaderDataType::Vec3, "a_Position" }
+			{ REngine::ShaderDataType::Vec3, "a_Position" },
+			{ REngine::ShaderDataType::Vec2, "a_TexCoord" }
 		};
 		vertexBuffer->SetLayout(layout);
 		m_Mesh->AddVertexBuffer(vertexBuffer);
-		// 3(triangle) * faces * tris per face
-		uint32_t squareIndices[3 * 6 * 2] = {   
-			//Top
-		2, 6, 7,
-		2, 3, 7,
-
-		//Bottom
-		0, 4, 5,
-		0, 1, 5,
-
-		//Left
-		0, 2, 6,
-		0, 4, 6,
-
-		//Right
-		1, 3, 7,
-		1, 5, 7,
-
-		//Front
-		0, 2, 3,
-		0, 1, 3,
-
-		//Back
-		4, 6, 7,
-		4, 5, 7 };
+		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 		std::shared_ptr<REngine::IndexBuffer> squareIB;
 		squareIB.reset(REngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_Mesh->SetIndexBuffer(squareIB);
@@ -62,17 +35,20 @@
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec4 a_Color;
+			layout(location = 1) in vec2 a_TexCoord;
+
 			uniform mat4 transformMatrix;
 			uniform mat4 projectionMatrix;
+
 			out mat4 transform;
 			out vec3 v_Position;
 			out vec4 v_Color;
+			out vec2 v_TexCoord;
 			void main()
 			{
 				transform = transformMatrix;
 				v_Position = a_Position;
-				v_Color = a_Color;
+				v_TexCoord = a_TexCoord;
 				gl_Position = projectionMatrix * transformMatrix * vec4(a_Position, 1.0);	
 			}
 		)";
@@ -84,25 +60,36 @@
 			in mat4 transform;
 			in vec3 v_Position;
 			in vec4 v_Color;
+
+			in vec2 v_TexCoord;
+			uniform sampler2D u_Texture;
 			void main()
 			{
 				color = v_Color;
 				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+				color = texture(u_Texture, v_TexCoord);
 			}
 		)";
 
-		m_Shader.reset(new REngine::Shader(vertexSrc, fragmentSrc));
-		m_Camera = new REngine::PerspectiveCamera(90.0f, 16 / 9, .001f, 9999.9f);
+		m_Shader.reset(REngine::Shader::Create(vertexSrc, fragmentSrc));
+
+		m_Texture = std::make_shared<REngine::Texture>("assets/textures/default.png");
 		
+		m_Camera = new REngine::PerspectiveCamera(90.0f, 16 / 9, .001f, 9999.9f);
 		m_Scene->SetCamera(m_Camera);
 		entity = m_Scene->CreateEntity();
 		{
 			REngine::MeshComponent mesh = REngine::MeshComponent();
 			mesh.mesh = m_Mesh;
 			mesh.material->SetShader(m_Shader);
+			mesh.material->Bind();
+			mesh.material->Set("u_Texture", 0);
+			mesh.material->SetTexture(m_Texture);
 			entity.AddComponent<REngine::MeshComponent>(mesh);
 		}
 		entity.GetComponent<REngine::TransformComponent>().Rotation = m_Rotation;
+		
+		
 		}
 
 	void OnUpdate() override
@@ -135,13 +122,17 @@
 	}
 	private:
 	REngine::PerspectiveCamera* m_Camera;
-	
 	glm::vec3 cam_Position = { 0.0f, 0.0f, 0.0f };
 	glm::vec3 cam_Rotation = { 0.0f, 0.0f, 0.0f };
+
+	REngine::Scene* m_Scene = new REngine::Scene();
 	REngine::Entity entity;
+	REngine::Entity cameraentity;
+
 	std::shared_ptr<REngine::Shader> m_Shader;
 	std::shared_ptr<REngine::Mesh> m_Mesh;
-	REngine::Scene* m_Scene = new REngine::Scene();
+	std::shared_ptr<REngine::Texture> m_Texture;
+
 	glm::vec3 m_Rotation = { 0.0f, 0.0f, 0.0f };
 	glm::vec3 m_Position = { 0.0f, 0.0f, 0.0f };
 	glm::vec3 m_Scale = { 1.0f, 1.0f, 1.0f };

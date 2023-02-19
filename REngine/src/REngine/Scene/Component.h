@@ -59,4 +59,10 @@ namespace REngine {
 		}
 		
 	};
+
+	struct CameraComponent
+	{
+		Ref<PerspectiveCamera> camera;
+
+	};
 };

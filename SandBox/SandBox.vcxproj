@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\REngine\vendor\spdlog\include;..\REngine\src;..\REngine\vendor;..\REngine\vendor\Glad\include;..\REngine\vendor\glm;..\REngine\vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\REngine\vendor\spdlog\include;..\REngine\src;..\REngine\vendor;..\REngine\vendor\Glad\include;..\REngine\vendor\glm;..\REngine\vendor\entt\include;..\REngine\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\REngine\vendor\spdlog\include;..\REngine\src;..\REngine\vendor;..\REngine\vendor\Glad\include;..\REngine\vendor\glm;..\REngine\vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\REngine\vendor\spdlog\include;..\REngine\src;..\REngine\vendor;..\REngine\vendor\Glad\include;..\REngine\vendor\glm;..\REngine\vendor\entt\include;..\REngine\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,7 +119,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\REngine\vendor\spdlog\include;..\REngine\src;..\REngine\vendor;..\REngine\vendor\Glad\include;..\REngine\vendor\glm;..\REngine\vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\REngine\vendor\spdlog\include;..\REngine\src;..\REngine\vendor;..\REngine\vendor\Glad\include;..\REngine\vendor\glm;..\REngine\vendor\entt\include;..\REngine\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

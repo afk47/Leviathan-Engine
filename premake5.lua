@@ -17,11 +17,15 @@ IncludeDir["Glad"] = "REngine/vendor/Glad/include"
 IncludeDir["glm"] = "REngine/vendor/glm/"
 IncludeDir["ImGui"] = "REngine/vendor/imgui"
 IncludeDir["entt"] = "REngine/vendor/entt/include"
+IncludeDir["stb_image"] = "REngine/vendor/stb_image"
 
 
-include "REngine/vendor/GLFW"
-include "REngine/vendor/Glad"
-include "REngine/vendor/imgui"
+group "Dependencies"
+	include "REngine/vendor/GLFW"
+	include "REngine/vendor/Glad"
+	include "REngine/vendor/imgui"
+
+group ""
 
 project "REngine"
 	location "REngine"
@@ -40,7 +44,11 @@ project "REngine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 	
 	defines
@@ -55,7 +63,8 @@ project "REngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.stb_image}"
 	}
 	
 	links
@@ -119,7 +128,8 @@ project "SandBox"
 		"REngine/vendor",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.stb_image}"
 	}
 	
 	links

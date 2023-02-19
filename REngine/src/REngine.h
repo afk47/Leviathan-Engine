@@ -20,6 +20,8 @@
 #include "REngine/Scene/Component.h"
 
 #include "REngine/Renderer/Material.h"
+#include "REngine/Renderer/Texture.h"
+
 
 //Math
 #include <glm/glm.hpp>

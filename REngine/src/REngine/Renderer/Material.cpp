@@ -8,6 +8,11 @@ namespace REngine {
 	{
 		if (m_Shader != nullptr)
 			m_Shader->Bind();
+
+		if (HasTexture()) {
+			m_Texture->Bind();
+			
+		}
 	}
 
 	void Material::UnBind()
