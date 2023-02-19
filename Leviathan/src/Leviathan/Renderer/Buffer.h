@@ -22,7 +22,7 @@ namespace Leviathan {
 			case ShaderDataType::Bool:	return 1;
 		}
 
-		RE_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		LE_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 
@@ -56,7 +56,7 @@ namespace Leviathan {
 			case ShaderDataType::Bool:	return 1;
 			}
 
-			RE_CORE_ASSERT(false, "INVALID TYPE");
+			LE_CORE_ASSERT(false, "INVALID TYPE");
 			return 0;
 		}
 

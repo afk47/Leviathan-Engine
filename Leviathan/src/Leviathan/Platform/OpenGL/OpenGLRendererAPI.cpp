@@ -17,20 +17,20 @@ namespace Leviathan {
 	{
 		switch (severity)
 		{
-		case GL_DEBUG_SEVERITY_HIGH:         RE_CORE_FATAL(message); return;
-		case GL_DEBUG_SEVERITY_MEDIUM:       RE_CORE_ERROR(message); return;
-		case GL_DEBUG_SEVERITY_LOW:          RE_CORE_WARN(message); return;
-		case GL_DEBUG_SEVERITY_NOTIFICATION: RE_CORE_TRACE(message); return;
+		case GL_DEBUG_SEVERITY_HIGH:         LE_CORE_FATAL(message); return;
+		case GL_DEBUG_SEVERITY_MEDIUM:       LE_CORE_ERROR(message); return;
+		case GL_DEBUG_SEVERITY_LOW:          LE_CORE_WARN(message); return;
+		case GL_DEBUG_SEVERITY_NOTIFICATION: LE_CORE_TRACE(message); return;
 		}
 
-		RE_CORE_ASSERT(false, "Unknown severity level!");
+		LE_CORE_ASSERT(false, "Unknown severity level!");
 	}
 
 	void OpenGLRendererAPI::Init()
 	{
 	
 
-#ifdef RE_DEBUG
+#ifdef LE_DEBUG
 		glEnable(GL_DEBUG_OUTPUT);
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageCallback(OpenGLMessageCallback, nullptr);

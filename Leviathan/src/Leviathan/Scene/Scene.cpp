@@ -20,6 +20,8 @@ namespace Leviathan {
 	}
 
 	Entity Scene::CreateEntity(const std::string& name) {
+
+		LE_PROFILE_FUNCTION();
 		Entity entity = { m_Registry.create(), this };
 		entity.AddComponent<TransformComponent>();
 		auto& tag = entity.AddComponent<TagComponent>();
@@ -33,7 +35,7 @@ namespace Leviathan {
 	}
 
 	void Scene::OnUpdate() {
-		
+		LE_PROFILE_FUNCTION();
 		{
 			Renderer::BeginScene();
 
@@ -41,6 +43,7 @@ namespace Leviathan {
 			m_Camera->OnUpdate();
 			for (auto entity : group)
 			{
+				LE_PROFILE_SCOPE("Entity");
 				auto [transform, meshcomp] = group.get<TransformComponent, MeshComponent>(entity);
 				meshcomp.material->Bind();
 				meshcomp.material->Set("transformMatrix", transform.GetTransform());
@@ -53,6 +56,7 @@ namespace Leviathan {
 
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
 	{
+		LE_PROFILE_FUNCTION();
 		m_ViewportWidth = width;
 		m_ViewportHeight = height;
 

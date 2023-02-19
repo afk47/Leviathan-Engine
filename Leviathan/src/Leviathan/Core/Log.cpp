@@ -11,7 +11,7 @@ namespace Leviathan {
 
 	void Log::Init() {
 		spdlog::set_pattern("%^[%T] %n: %v%$");
-		s_CoreLogger = spdlog::stdout_color_mt("RENGINE");
+		s_CoreLogger = spdlog::stdout_color_mt("LEVIATHAN");
 		s_CoreLogger->set_level(spdlog::level::trace);
 
 		s_ClientLogger = spdlog::stdout_color_mt("APP");

@@ -73,7 +73,7 @@
 
 		m_Shader.reset(Leviathan::Shader::Create(vertexSrc, fragmentSrc));
 
-		m_Texture = std::make_shared<Leviathan::Texture>("assets/textures/default.png");
+		m_Texture = std::make_shared<Leviathan::Texture>("assets/textures/transparencytest.png");
 		
 		m_Camera = new Leviathan::PerspectiveCamera(90.0f, 16 / 9, .001f, 9999.9f);
 		m_Scene->SetCamera(m_Camera);
@@ -118,7 +118,7 @@
 
 	void OnEvent(Leviathan::Event& event) override
 	{
-		RE_TRACE("{0}", event);
+		//LE_TRACE("{0}", event);
 	}
 	private:
 	Leviathan::PerspectiveCamera* m_Camera;

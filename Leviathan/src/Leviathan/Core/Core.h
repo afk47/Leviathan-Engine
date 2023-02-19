@@ -6,8 +6,8 @@
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
 
 #ifdef _WIN64
-	#ifndef RE_PLATFORM_WINDOWS
-	#define RE_PLATFORM_WINDOWS
+	#ifndef LE_PLATFORM_WINDOWS
+	#define LE_PLATFORM_WINDOWS
 	#endif
 #else
    
@@ -43,17 +43,17 @@
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#ifdef RE_ENABLE_ASSERTS
-	#define RE_ASSERT(x, ...) { if(!(x)){ RE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define RE_CORE_ASSERT(x, ...) { if(!(x)){ RE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#ifdef LE_ENABLE_ASSERTS
+	#define LE_ASSERT(x, ...) { if(!(x)){ RE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define LE_CORE_ASSERT(x, ...) { if(!(x)){ LE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
-	#define RE_ASSERT(x, ...)
-	#define RE_CORE_ASSERT(x, ...)
+	#define LE_ASSERT(x, ...)
+	#define LE_CORE_ASSERT(x, ...)
 #endif
 
 #define BIT(x) (1 << x)
 
-#define RE_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+#define LE_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
 namespace Leviathan {
 

@@ -21,7 +21,7 @@ namespace Leviathan
 		case ShaderDataType::Int4:	return GL_INT;
 		case ShaderDataType::Bool:	return GL_BOOL;
 		}
-		RE_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		LE_CORE_ASSERT(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 
@@ -37,6 +37,8 @@ namespace Leviathan
 
 	void OpenGLVertexArray::Bind() const
 	{
+
+		LE_PROFILE_FUNCTION();
 		glBindVertexArray(m_RendererID);
 	}
 
@@ -47,7 +49,8 @@ namespace Leviathan
 
 	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
 	{
-		RE_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout");
+		LE_PROFILE_FUNCTION();
+		LE_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout");
 		glBindVertexArray(m_RendererID);
 		vertexBuffer->Bind();
 
@@ -69,6 +72,8 @@ namespace Leviathan
 
 	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
 	{
+
+		LE_PROFILE_FUNCTION();
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();
 		m_IndexBuffer = indexBuffer;

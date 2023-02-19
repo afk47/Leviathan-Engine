@@ -54,9 +54,9 @@ namespace Leviathan {
 		void OnUpdate();
 		void UpdateView();
 
-		inline void SetViewportSize(float width, float height) { m_ViewportWidth = width; m_ViewportHeight = height; UpdateView();  }
-		virtual void SetPosition(const glm::vec3& position) override {m_Position = position; UpdateView();}
-		virtual void SetRotation(glm::vec3 rotation) { m_Rotation = rotation; UpdateView(); }
+		inline void SetViewportSize(float width, float height) { m_ViewportWidth = width; m_ViewportHeight = height; update = true;}
+		virtual void SetPosition(const glm::vec3& position) override {m_Position = position; update = true;}
+		virtual void SetRotation(glm::vec3 rotation) { m_Rotation = rotation; update = true; }
 
 		virtual const glm::vec3& GetRotation() const { return m_Rotation; }
 		virtual const glm::vec3& GetPosition() const override { return m_Position; }
@@ -67,11 +67,10 @@ namespace Leviathan {
 
 
 	private:
-
-		void RecalculateViewMatrix();
 		bool OnResize(WindowResizeEvent& e);
 
 	private:
+		bool update = false;
 		glm::mat4 m_ProjectionMatrix = glm::mat4(1.0f);
 		glm::mat4 m_ViewMatrix = glm::mat4(1.0f);
 		glm::mat4 m_ViewProjectionMatrix = glm::mat4(1.0f);

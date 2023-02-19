@@ -2,6 +2,7 @@
 #include "Application.h"
 
 #include "Leviathan/Core/Log.h"
+#include "Leviathan/Utils/Timer.h"
 
 #include "glad/glad.h"
 
@@ -15,7 +16,7 @@ namespace Leviathan {
 
 	Application::Application()
 	{
-		RE_CORE_ASSERT(!s_Instance, "Application already exists!");
+		LE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		m_Window = Unique<Window>(Window::Create());
@@ -60,19 +61,26 @@ namespace Leviathan {
 	{
 		while (m_Running)
 		{
+			LE_PROFILE_FUNCTION();
+
 			m_RenderAPI->SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 			m_RenderAPI->Clear();
 
-		
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
-
-			m_ImGuiLayer->Begin();
+			{
+				LE_PROFILE_SCOPE("Layers");
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate();
+			}
 			
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+			{
+				LE_PROFILE_SCOPE("ImGUI");
+				m_ImGuiLayer->Begin();
 
+				for (Layer* layer : m_LayerStack)
+					layer->OnImGuiRender();
+
+				m_ImGuiLayer->End();
+			}
 			m_Window->OnUpdate();
 		}
 	}

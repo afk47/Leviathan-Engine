@@ -15,7 +15,7 @@ namespace Leviathan {
 
 	static void GLFWErrorCallback(int error, const char* desription)
 	{
-		RE_CORE_ERROR("GLFW ERROR ({0}): {1}", error, desription);
+		LE_CORE_ERROR("GLFW ERROR ({0}): {1}", error, desription);
 	}
 
 	Window* Window::Create(const WindowProps& props)
@@ -39,13 +39,13 @@ namespace Leviathan {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
-		RE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		LE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 	
 		if (!s_GLFWInitialized)
 		{
 			//TODO: glfwTerminate on system shutdown
 			int success = glfwInit();
-			RE_CORE_ASSERT(success, "Could not initialize GLFW!");
+			LE_CORE_ASSERT(success, "Could not initialize GLFW!");
 
 			s_GLFWInitialized = true;
 		}
@@ -56,7 +56,7 @@ namespace Leviathan {
 		m_Context->Init();
 		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
-		SetVSync(true);
+		SetVSync(false);
 
 		//Setting GLFW Callbacks
 		setGLFWCallbacks();

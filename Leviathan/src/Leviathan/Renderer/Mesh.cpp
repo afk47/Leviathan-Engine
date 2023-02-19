@@ -10,10 +10,10 @@ namespace Leviathan {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::API::None: RE_CORE_ASSERT(false, "RENDERAPI NOT SUPPORTED"); return nullptr;
+			case RendererAPI::API::None: LE_CORE_ASSERT(false, "RENDERAPI NOT SUPPORTED"); return nullptr;
 			case RendererAPI::API::OpenGL: return new OpenGLVertexArray();
 		}
-		RE_CORE_ASSERT(false, "RENDERAPI NOT SUPPORTED"); 
+		LE_CORE_ASSERT(false, "RENDERAPI NOT SUPPORTED"); 
 		return nullptr;
 	}
 

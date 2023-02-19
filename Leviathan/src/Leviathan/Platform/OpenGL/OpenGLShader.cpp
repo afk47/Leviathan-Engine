@@ -36,8 +36,8 @@ namespace Leviathan {
 			// We don't need the shader anymore.
 			glDeleteShader(vertexShader);
 
-			RE_CORE_ERROR("{0}", infoLog.data());
-			RE_CORE_ASSERT(false, "Vertex shader compilation failure!");
+			LE_CORE_ERROR("{0}", infoLog.data());
+			LE_CORE_ASSERT(false, "Vertex shader compilation failure!");
 			return;
 		}
 
@@ -67,8 +67,8 @@ namespace Leviathan {
 			// Either of them. Don't leak shaders.
 			glDeleteShader(vertexShader);
 
-			RE_CORE_ERROR("{0}", infoLog.data());
-			RE_CORE_ASSERT(false, "Fragment shader compilation failure!");
+			LE_CORE_ERROR("{0}", infoLog.data());
+			LE_CORE_ASSERT(false, "Fragment shader compilation failure!");
 			return;
 		}
 
@@ -103,8 +103,8 @@ namespace Leviathan {
 			glDeleteShader(vertexShader);
 			glDeleteShader(fragmentShader);
 
-			RE_CORE_ERROR("{0}", infoLog.data());
-			RE_CORE_ASSERT(false, "Shader link failure!");
+			LE_CORE_ERROR("{0}", infoLog.data());
+			LE_CORE_ASSERT(false, "Shader link failure!");
 			return;
 		}
 

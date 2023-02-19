@@ -12,10 +12,10 @@ namespace Leviathan {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None: RE_CORE_ASSERT(false, "No Renderer API") return nullptr;
+		case RendererAPI::API::None: LE_CORE_ASSERT(false, "No Renderer API") return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
 		}
-		RE_CORE_ASSERT(false, "Unknown RendererAPI!");
+		LE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
 
@@ -23,10 +23,10 @@ namespace Leviathan {
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::API::None: RE_CORE_ASSERT(false, "No Renderer API") return nullptr;
+		case RendererAPI::API::None: LE_CORE_ASSERT(false, "No Renderer API") return nullptr;
 		case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, size);
 		}
-		RE_CORE_ASSERT(false, "Unknown RendererAPI!");
+		LE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
 

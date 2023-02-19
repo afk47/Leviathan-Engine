@@ -67,6 +67,7 @@ namespace Leviathan {
 
 	void ImGuiLayer::Begin()
 	{
+		LE_PROFILE_FUNCTION();
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -76,6 +77,7 @@ namespace Leviathan {
 
 	void ImGuiLayer::End()
 	{
+		LE_PROFILE_FUNCTION();
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
@@ -167,7 +169,8 @@ namespace Leviathan {
 
 	void ImGuiLayer::OnImGuiRender() 
 	{
-		
+
+		LE_PROFILE_FUNCTION();
 	}
 
 }

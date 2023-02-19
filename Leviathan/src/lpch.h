@@ -13,6 +13,7 @@
 #include <unordered_set>
 
 #include "Leviathan/Core/Log.h"
+#include "Leviathan/Utils/Profiler.h"
 
 #ifdef RE_PLATFORM_WINDOWS
 	#include <Windows.h>

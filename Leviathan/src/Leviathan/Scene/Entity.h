@@ -14,7 +14,7 @@ namespace Leviathan {
 		template<typename T, typename... Args>
 		T& AddComponent(Args&&... args)
 		{
-			RE_CORE_ASSERT(!HasComponent<T>(), "Entity already has component!");
+			LE_CORE_ASSERT(!HasComponent<T>(), "Entity already has component!");
 			T& component = m_Scene->m_Registry.emplace<T>(m_EntityHandle, std::forward<Args>(args)...);//Forwards Args to component definition
 			m_Scene->OnComponentAdded<T>(*this, component);
 			return component;
@@ -23,7 +23,7 @@ namespace Leviathan {
 		template<typename T>
 		T& GetComponent()
 		{
-			RE_CORE_ASSERT(HasComponent<T>(), "Entity doesn't have component!");
+			LE_CORE_ASSERT(HasComponent<T>(), "Entity doesn't have component!");
 			return m_Scene->m_Registry.get<T>(m_EntityHandle);
 		}
 
@@ -36,7 +36,7 @@ namespace Leviathan {
 		template<typename T>
 		void RemoveComponent()
 		{
-			RE_CORE_ASSERT(HasComponent<T>(), "Entity does not have component!");
+			LE_CORE_ASSERT(HasComponent<T>(), "Entity does not have component!");
 			m_Scene->m_Registry.remove<T>(m_EntityHandle);
 		}
 

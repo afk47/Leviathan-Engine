@@ -146,6 +146,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Leviathan\Utils\Profiler.h" />
     <ClInclude Include="src\Leviathan.h" />
     <ClInclude Include="src\Leviathan\Core\Application.h" />
     <ClInclude Include="src\Leviathan\Core\Core.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="src\Leviathan\Scene\Scene.h" />
     <ClInclude Include="src\Leviathan\Utils\Timer.h" />
     <ClInclude Include="src\lpch.h" />
+    <ClInclude Include="src\Leviathan\Utils\Timestep.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_fixes.hpp" />

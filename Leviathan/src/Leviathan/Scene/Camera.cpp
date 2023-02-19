@@ -28,7 +28,11 @@ namespace Leviathan {
 	/// 
 
 	void PerspectiveCamera::OnUpdate() {
-		UpdateView();
+		if (update) 
+		{ 
+			UpdateView(); 
+			update = false;
+		}
 	}
 
 	PerspectiveCamera::PerspectiveCamera(float fov, float aspectRatio, float zNear, float zFar) 
@@ -41,6 +45,7 @@ namespace Leviathan {
 	{
 		// m_Yaw = m_Pitch = 0.0f; // Lock the camera's rotation
 
+		LE_PROFILE_FUNCTION();
 
 		glm::quat orientation = glm::quat(m_Rotation);
 		m_ViewMatrix = glm::translate(glm::mat4(1.0f), m_Position) * glm::toMat4(orientation);
@@ -53,7 +58,7 @@ namespace Leviathan {
 	void PerspectiveCamera::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowResizeEvent>(RE_BIND_EVENT_FN(PerspectiveCamera::OnResize));
+		dispatcher.Dispatch<WindowResizeEvent>(LE_BIND_EVENT_FN(PerspectiveCamera::OnResize));
 	}
 
 	bool PerspectiveCamera::OnResize(WindowResizeEvent& e) 
@@ -64,11 +69,5 @@ namespace Leviathan {
 		return false;
 	}
 
-	void PerspectiveCamera::RecalculateViewMatrix()
-	{
-		glm::quat orientation = glm::quat(glm::vec3(-m_Pitch, -m_Yaw, 0.0f));
-		m_ViewMatrix = glm::translate(glm::mat4(1.0f), m_Position) * glm::toMat4(orientation);
-		m_ViewMatrix = glm::inverse(m_ViewMatrix);
-	}
 
 }

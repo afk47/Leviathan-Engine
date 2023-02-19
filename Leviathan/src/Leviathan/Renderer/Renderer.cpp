@@ -14,6 +14,7 @@ namespace Leviathan {
 
 	void Renderer::Submit(const Ref<Material>& material, const Ref<Mesh>& mesh)
 	{
+		LE_PROFILE_FUNCTION();
 		material->Bind();
 		mesh->Bind();
 		RenderTask::DrawIndexed(mesh);
