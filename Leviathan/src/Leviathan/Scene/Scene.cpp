@@ -4,15 +4,20 @@
 #include "Entity.h"
 #include "Component.h"
 
+#include "Leviathan/Core/Application.h"
+#include "Leviathan/Core/Layer.h"
 #include "Leviathan/Renderer/Renderer.h"
 
 #include <glm/glm.hpp>
 
 namespace Leviathan {
 
+	
+
 	Scene::Scene()
 	{
-
+		debugLayer = new DebugLayer();
+		Application::Get().PushOverlay(debugLayer);
 	}
 
 	Scene::~Scene() {
@@ -29,18 +34,20 @@ namespace Leviathan {
 		return entity;
 	}
 
-
 	void Scene::DestroyEntity(Entity entity) {
 		m_Registry.destroy(entity);
 	}
 
 	void Scene::OnUpdate(Timestep ts) {
 		LE_PROFILE_FUNCTION();
+		//
 		{
 			Renderer::BeginScene();
 
 			auto group = m_Registry.group<TransformComponent>(entt::get<MeshComponent>);
 			m_Camera->OnUpdate(ts);
+			debugLayer->vertices = 0;
+			debugLayer->draws = 0;
 			for (auto entity : group)
 			{
 				LE_PROFILE_SCOPE("Entity");
@@ -49,6 +56,9 @@ namespace Leviathan {
 				meshcomp.material->Set("transformMatrix", transform.GetTransform());
 				meshcomp.material->Set("projectionMatrix", m_Camera->GetViewProjectionMatrix());
 				Renderer::Submit(meshcomp.material, meshcomp.mesh);
+				
+				debugLayer->vertices += meshcomp.mesh->GetIndexBuffer()->GetCount();
+				debugLayer->draws++;
 			}
 			Renderer::EndScene();
 		}

@@ -2,10 +2,15 @@
 #include "Camera.h"
 #include "entt.hpp"
 #include "Leviathan/Utils/Timestep.h"
+
+#include "imgui.h"
+#include "Leviathan/Core/Layer.h"
 namespace Leviathan {
 
 	class Entity;
 	
+	class DebugLayer;
+
 	class Scene {
 	public:
 		Scene();
@@ -23,6 +28,34 @@ namespace Leviathan {
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth = 0, m_ViewportHeight = 0;
 		PerspectiveCamera* m_Camera = nullptr;
+		DebugLayer* debugLayer;
 		friend class Entity;
+	};
+
+
+	class DebugLayer : public Layer
+	{
+	public:
+
+		DebugLayer() 
+		{
+
+		}
+		void OnImGuiRender(Timestep ts)
+		{
+			std::string temp;
+			ImGui::Begin("Debug");
+			temp = "Draw Calls: " + std::to_string(draws);
+			ImGui::Text(temp.c_str());
+			temp = "Tris: " + std::to_string(vertices / 3);
+			ImGui::Text(temp.c_str());
+			temp = "Frametime: " + std::to_string(ts.GetMilliseconds()) + "ms (FPS " + std::to_string(1 / (ts.GetMilliseconds() * 0.001)) + ")";
+			ImGui::Text(temp.c_str());
+			ImGui::End();
+		}
+
+		uint32_t draws = 0;
+		float frametime = 0.0f;
+		float vertices = 0.0f;
 	};
 }

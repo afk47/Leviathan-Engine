@@ -171,7 +171,16 @@
     <ClInclude Include="src\Leviathan\Scene\Scene.h">
       <Filter>src\Leviathan\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\FileUtils.h">
+      <Filter>src\Leviathan\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\Profiler.h">
+      <Filter>src\Leviathan\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="src\Leviathan\Utils\Timer.h">
+      <Filter>src\Leviathan\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\Timestep.h">
       <Filter>src\Leviathan\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\lpch.h">
@@ -1428,11 +1437,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Leviathan\Utils\Timestep.h">
-      <Filter>src\Leviathan\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Leviathan\Utils\Profiler.h" />
-    <ClInclude Include="src\Leviathan\Utils\FileUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Leviathan\Core\Application.cpp">

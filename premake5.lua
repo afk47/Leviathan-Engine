@@ -128,7 +128,8 @@ project "SandBox"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.ImGui}"
 	}
 	
 	links

@@ -37,7 +37,7 @@ namespace Leviathan {
 
 	
 	
-	class   Event
+	class Event
 	{
 		friend class EventDispatcher;
 	public:
