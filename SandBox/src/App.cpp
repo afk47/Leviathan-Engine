@@ -71,7 +71,7 @@
 			}
 		)";
 
-		m_Shader.reset(Leviathan::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader.reset(Leviathan::Shader::Create("assets/shaders/Textureshader.glsl"));
 
 		m_Texture = std::make_shared<Leviathan::Texture>("assets/textures/transparencytest.png");
 		
@@ -92,17 +92,17 @@
 		
 		}
 
-	void OnUpdate() override
+	void OnUpdate(Leviathan::Timestep ts) override
 	{
 		m_Camera->SetPosition(cam_Position);
 		m_Camera->SetRotation(cam_Rotation);
 		entity.GetComponent<Leviathan::TransformComponent>().Rotation = m_Rotation;
 		entity.GetComponent<Leviathan::TransformComponent>().Translation = m_Position;
 		entity.GetComponent<Leviathan::TransformComponent>().Scale = m_Scale;
-		m_Scene->OnUpdate();
+		m_Scene->OnUpdate(ts);
 	}
 
-	virtual void OnImGuiRender() override
+	virtual void OnImGuiRender(Leviathan::Timestep ts) override
 	{
 		ImGui::Begin("Settings");
 		ImGui::SliderFloat3("Rotation", glm::value_ptr(m_Rotation), 0.1f, 6.28f);

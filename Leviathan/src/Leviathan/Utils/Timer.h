@@ -7,10 +7,8 @@ namespace Leviathan {
 	class Timer
 	{
 	public:
-		Timer(const char* name, bool core)
+		Timer()
 		{
-			m_Core = core;
-			m_Name = name;
 			Reset();
 		}
 
@@ -34,8 +32,7 @@ namespace Leviathan {
 		}
 	private:
 		std::chrono::time_point<std::chrono::high_resolution_clock> m_Start;
-		const char* m_Name;
-		bool m_Core;
+		
 	};
 }
 

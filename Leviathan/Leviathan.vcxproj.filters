@@ -1432,6 +1432,7 @@
       <Filter>src\Leviathan\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Leviathan\Utils\Profiler.h" />
+    <ClInclude Include="src\Leviathan\Utils\FileUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Leviathan\Core\Application.cpp">

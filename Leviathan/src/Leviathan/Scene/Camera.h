@@ -1,6 +1,7 @@
 #pragma once
 #include "Leviathan/Events/Event.h"
 #include "Leviathan/Events/ApplicationEvent.h"
+#include "Leviathan/Utils/Timestep.h"
 #include <glm/glm.hpp>
 
 namespace Leviathan {
@@ -51,7 +52,7 @@ namespace Leviathan {
 	public:
 		PerspectiveCamera(float fov, float aspectRatio, float zNear, float zFar);
 		void OnEvent(Event& e);
-		void OnUpdate();
+		void OnUpdate(Timestep ts);
 		void UpdateView();
 
 		inline void SetViewportSize(float width, float height) { m_ViewportWidth = width; m_ViewportHeight = height; update = true;}

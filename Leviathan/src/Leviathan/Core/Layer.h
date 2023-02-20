@@ -3,6 +3,7 @@
 #include "Leviathan/Core/Core.h"
 #include "Leviathan/Events/Event.h"
 
+#include "Leviathan/Utils/Timestep.h"
 namespace Leviathan {
 
 	class Layer
@@ -13,8 +14,8 @@ namespace Leviathan {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
-		virtual void OnImGuiRender() {}
+		virtual void OnUpdate(Timestep ts) {}
+		virtual void OnImGuiRender(Timestep ts) {}
 		virtual void OnEvent(Event& event) {}
 
 		inline const std::string& GetName() const { return m_DebugName; }

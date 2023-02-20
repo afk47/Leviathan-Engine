@@ -27,7 +27,7 @@ namespace Leviathan {
 	///	Perspective Camera
 	/// 
 
-	void PerspectiveCamera::OnUpdate() {
+	void PerspectiveCamera::OnUpdate(Timestep ts) {
 		if (update) 
 		{ 
 			UpdateView(); 

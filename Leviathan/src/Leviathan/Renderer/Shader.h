@@ -32,7 +32,7 @@ namespace Leviathan {
 		virtual void SetMat3(const std::string& name, const glm::mat3& value) = 0;
 		virtual void SetMat4(const std::string& name, const glm::mat4& value) = 0;
 
-		static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
+		static Shader* Create(const std::string& filepath);
 	};
 
 	

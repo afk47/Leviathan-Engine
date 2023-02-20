@@ -34,13 +34,13 @@ namespace Leviathan {
 		m_Registry.destroy(entity);
 	}
 
-	void Scene::OnUpdate() {
+	void Scene::OnUpdate(Timestep ts) {
 		LE_PROFILE_FUNCTION();
 		{
 			Renderer::BeginScene();
 
 			auto group = m_Registry.group<TransformComponent>(entt::get<MeshComponent>);
-			m_Camera->OnUpdate();
+			m_Camera->OnUpdate(ts);
 			for (auto entity : group)
 			{
 				LE_PROFILE_SCOPE("Entity");

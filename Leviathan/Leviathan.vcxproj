@@ -146,6 +146,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Leviathan\Utils\FileUtils.h" />
     <ClInclude Include="src\Leviathan\Utils\Profiler.h" />
     <ClInclude Include="src\Leviathan.h" />
     <ClInclude Include="src\Leviathan\Core\Application.h" />

@@ -167,7 +167,7 @@ namespace Leviathan {
 		io.Fonts->AddFontFromFileTTF("../Leviathan/vendor/imgui/misc/fonts/DroidSans.ttf", 15.0f);
 	}
 
-	void ImGuiLayer::OnImGuiRender() 
+	void ImGuiLayer::OnImGuiRender(Timestep ts) 
 	{
 
 		LE_PROFILE_FUNCTION();

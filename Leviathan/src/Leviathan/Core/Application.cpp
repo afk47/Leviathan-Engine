@@ -59,9 +59,12 @@ namespace Leviathan {
 
 	void Application::Run()
 	{
+		Timestep ts = Timestep();
 		while (m_Running)
 		{
-			LE_PROFILE_FUNCTION();
+			Timer timer = Timer();
+			LE_PROFILE_SCOPE("Main Loop");
+			
 
 			m_RenderAPI->SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 			m_RenderAPI->Clear();
@@ -69,7 +72,7 @@ namespace Leviathan {
 			{
 				LE_PROFILE_SCOPE("Layers");
 				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate();
+					layer->OnUpdate(ts);
 			}
 			
 			{
@@ -77,11 +80,12 @@ namespace Leviathan {
 				m_ImGuiLayer->Begin();
 
 				for (Layer* layer : m_LayerStack)
-					layer->OnImGuiRender();
+					layer->OnImGuiRender(ts);
 
 				m_ImGuiLayer->End();
 			}
 			m_Window->OnUpdate();
+			ts = Timestep(timer.GetElapsed());
 		}
 	}
 
