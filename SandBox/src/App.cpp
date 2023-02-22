@@ -8,61 +8,33 @@
 	ExampleLayer()
 		: Layer("Example")
 	{
-		m_Mesh.reset(Leviathan::Mesh::Create());
+		LE_PROFILE_SCOPE("INIT LAYER");
 
-		float vertices[5 * 4] = {
-			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
-			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
-		};
+		m_Shader.reset(Leviathan::Shader::Create("assets/shaders/solid.glsl"));
 
-		std::shared_ptr<Leviathan::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Leviathan::VertexBuffer::Create(vertices, sizeof(vertices)));
-		Leviathan::BufferLayout layout = {
-			{ Leviathan::ShaderDataType::Vec3, "a_Position" },
-			{ Leviathan::ShaderDataType::Vec2, "a_TexCoord" }
-		};
-		vertexBuffer->SetLayout(layout);
-		m_Mesh->AddVertexBuffer(vertexBuffer);
-		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Leviathan::IndexBuffer> squareIB;
-		squareIB.reset(Leviathan::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-		m_Mesh->SetIndexBuffer(squareIB);
-
-		m_Shader.reset(Leviathan::Shader::Create("assets/shaders/Textureshader.glsl"));
-
-		m_Texture = std::make_shared<Leviathan::Texture>("assets/textures/transparencytest.png");
-		
 		m_Camera = new Leviathan::PerspectiveCamera(90.0f, 16 / 9, .001f, 9999.9f);
 		m_Scene->SetCamera(m_Camera);
-		entity = m_Scene->CreateEntity();
-		{
-			Leviathan::MeshComponent mesh = Leviathan::MeshComponent();
-			mesh.mesh = m_Mesh;
-			mesh.material->SetShader(m_Shader);
-			mesh.material->Bind();
-			mesh.material->Set("u_Texture", 0);
-			mesh.material->SetTexture(m_Texture);
-			entity.AddComponent<Leviathan::MeshComponent>(mesh);
-		}
-		entity.GetComponent<Leviathan::TransformComponent>().Rotation = m_Rotation;
+
+		entity = m_Scene->LoadMeshes("assets/models/cube.obj", m_Shader);
 		
-		
+
 		}
 
 	void OnUpdate(Leviathan::Timestep ts) override
 	{
 		m_Camera->SetPosition(cam_Position);
 		m_Camera->SetRotation(cam_Rotation);
-		entity.GetComponent<Leviathan::TransformComponent>().Rotation = m_Rotation;
-		entity.GetComponent<Leviathan::TransformComponent>().Translation = m_Position;
-		entity.GetComponent<Leviathan::TransformComponent>().Scale = m_Scale;
+		
+		
+		entity.at(0).GetComponent<Leviathan::TransformComponent>().Rotation = m_Rotation;
+		entity.at(0).GetComponent<Leviathan::TransformComponent>().Translation = m_Position;
+		entity.at(0).GetComponent<Leviathan::TransformComponent>().Scale = m_Scale;
 		m_Scene->OnUpdate(ts);
 	}
 
 	virtual void OnImGuiRender(Leviathan::Timestep ts) override
 	{
+		LE_PROFILE_SCOPE("LAYER GUI");
 		ImGui::Begin("Settings");
 		ImGui::SliderFloat3("Rotation", glm::value_ptr(m_Rotation), 0.1f, 6.28f);
 		ImGui::SliderFloat3("Position", glm::value_ptr(m_Position), -5.0f, 5.0f);
@@ -85,7 +57,7 @@
 	glm::vec3 cam_Rotation = { 0.0f, 0.0f, 0.0f };
 
 	Leviathan::Scene* m_Scene = new Leviathan::Scene();
-	Leviathan::Entity entity;
+	std::vector<Leviathan::Entity> entity;
 	Leviathan::Entity cameraentity;
 
 	std::shared_ptr<Leviathan::Shader> m_Shader;
@@ -103,7 +75,8 @@
 
 	public:
 	Sandbox() {
-		PushLayer(new ExampleLayer());
+		LE_PROFILE_SCOPE("INIT APP");
+	PushLayer(new ExampleLayer());
 	}
 	~Sandbox() {
 

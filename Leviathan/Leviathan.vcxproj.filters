@@ -37,6 +37,9 @@
     <Filter Include="src\Leviathan\Utils">
       <UniqueIdentifier>{18788EF2-84D9-6B00-0D47-B2B279A7A2BF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Leviathan\Utils\assimp">
+      <UniqueIdentifier>{34D85AD5-20E8-06A6-89A1-6BC475D0F53E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -182,6 +185,9 @@
     </ClInclude>
     <ClInclude Include="src\Leviathan\Utils\Timestep.h">
       <Filter>src\Leviathan\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\assimp\MeshLoader.h">
+      <Filter>src\Leviathan\Utils\assimp</Filter>
     </ClInclude>
     <ClInclude Include="src\lpch.h">
       <Filter>src</Filter>
@@ -1507,6 +1513,9 @@
     </ClCompile>
     <ClCompile Include="src\Leviathan\Scene\Scene.cpp">
       <Filter>src\Leviathan\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Leviathan\Utils\assimp\MeshLoader.cpp">
+      <Filter>src\Leviathan\Utils\assimp</Filter>
     </ClCompile>
     <ClCompile Include="src\lpch.cpp">
       <Filter>src</Filter>

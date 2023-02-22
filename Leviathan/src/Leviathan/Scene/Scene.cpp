@@ -7,8 +7,10 @@
 #include "Leviathan/Core/Application.h"
 #include "Leviathan/Core/Layer.h"
 #include "Leviathan/Renderer/Renderer.h"
+#include "Leviathan/Utils/assimp/MeshLoader.h"
 
 #include <glm/glm.hpp>
+
 
 namespace Leviathan {
 
@@ -80,7 +82,20 @@ namespace Leviathan {
 // 		}
 	}
 
+	std::vector<Entity> Scene::LoadMeshes(const std::string& path, Ref<Shader> shader) {
 
+		std::vector<Entity> output = std::vector<Entity>();
+		std::vector<MeshComponent> meshes = MeshLoader().LoadMeshes(path);
+		for (auto mesh : meshes) {
+			Entity entity = CreateEntity();
+			mesh.material->SetShader(shader);
+			entity.AddComponent<MeshComponent>(mesh);
+			output.reserve(1);
+			output.push_back(entity);
+
+		}
+		return output;
+	}
 
 	//Methods for when components are added
 	template<typename T>

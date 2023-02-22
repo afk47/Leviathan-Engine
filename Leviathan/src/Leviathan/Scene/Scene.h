@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "entt.hpp"
 #include "Leviathan/Utils/Timestep.h"
+#include "Leviathan/Renderer/Shader.h"
 
 #include "imgui.h"
 #include "Leviathan/Core/Layer.h"
@@ -21,6 +22,8 @@ namespace Leviathan {
 		void SetCamera(PerspectiveCamera *camera) { m_Camera = camera; }
 		void OnUpdate(Timestep ts);
 		void OnViewportResize(uint32_t width, uint32_t height);
+
+		std::vector<Entity> LoadMeshes(const std::string& path, Ref<Shader> shader);
 	private:
 		template<typename T>
 		void OnComponentAdded(Entity entity, T& component);
@@ -47,7 +50,7 @@ namespace Leviathan {
 			ImGui::Begin("Debug");
 			temp = "Draw Calls: " + std::to_string(draws);
 			ImGui::Text(temp.c_str());
-			temp = "Tris: " + std::to_string(vertices / 3);
+			temp = "Vertices: " + std::to_string(vertices);
 			ImGui::Text(temp.c_str());
 			temp = "Frametime: " + std::to_string(ts.GetMilliseconds()) + "ms (FPS " + std::to_string(1 / (ts.GetMilliseconds() * 0.001)) + ")";
 			ImGui::Text(temp.c_str());
