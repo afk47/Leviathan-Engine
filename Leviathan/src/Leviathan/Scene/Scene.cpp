@@ -52,7 +52,7 @@ namespace Leviathan {
 			debugLayer->draws = 0;
 			for (auto entity : group)
 			{
-				LE_PROFILE_SCOPE("Entity");
+				LE_PROFILE_SCOPE("Entity Update");
 				auto [transform, meshcomp] = group.get<TransformComponent, MeshComponent>(entity);
 				meshcomp.material->Bind();
 				meshcomp.material->Set("transformMatrix", transform.GetTransform());
@@ -84,13 +84,13 @@ namespace Leviathan {
 
 	std::vector<Entity> Scene::LoadMeshes(const std::string& path, Ref<Shader> shader) {
 
+		LE_PROFILE_FUNCTION();
 		std::vector<Entity> output = std::vector<Entity>();
 		std::vector<MeshComponent> meshes = MeshLoader().LoadMeshes(path);
 		for (auto mesh : meshes) {
 			Entity entity = CreateEntity();
 			mesh.material->SetShader(shader);
 			entity.AddComponent<MeshComponent>(mesh);
-			output.reserve(1);
 			output.push_back(entity);
 
 		}

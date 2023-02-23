@@ -4,7 +4,9 @@
 namespace Leviathan {
 
 	
-
+	/// 
+	/// Size in bytes of the different shader datatypes 
+	/// 
 	static uint32_t ShaderDataTypeSize(ShaderDataType type)
 	{
 		switch (type)
@@ -63,6 +65,11 @@ namespace Leviathan {
 
 	};
 
+	/// <summary>
+	/// Buffer layouts define the structure of the data within the buffer
+	/// EX if there is a Vertice data then UV data it would be 
+	/// VerticeX, VerticeY, VerticeZ, UVX, UVY, and then repeat for each vertice
+	/// </summary>
 	class BufferLayout
 	{
 	public:

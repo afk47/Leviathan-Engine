@@ -7,10 +7,9 @@ namespace Leviathan {
 
 	std::vector<MeshComponent> MeshLoader::LoadMeshes(const std::string& path)
 	{
-	
 		Assimp::Importer importer;
 		
-		const aiScene* scene = importer.ReadFile(path, aiProcessPreset_TargetRealtime_MaxQuality);
+		const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_SortByPType | aiProcess_ValidateDataStructure);
 
 		if (importer.GetErrorString() == "") {
 			LE_CORE_ERROR(importer.GetErrorString());
@@ -39,9 +38,8 @@ namespace Leviathan {
 
 	MeshComponent MeshLoader::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 	{
-		MeshComponent meshcomp = MeshComponent();
 		std::vector<float> vertices;
-		std::vector<unsigned int> indices;
+		std::vector<uint32_t> indices;
 
 		for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 		{
@@ -52,10 +50,11 @@ namespace Leviathan {
 		// process indices - assumes all faces are tris (to ensure use aiProcess_Triangulate flag)
 		for (unsigned int i = 0; i < mesh->mNumFaces; i++)
 		{
-			
-			indices.push_back(mesh->mFaces->mIndices[0]);
-			indices.push_back(mesh->mFaces->mIndices[1]);
-			indices.push_back(mesh->mFaces->mIndices[2]);
+			const aiFace& face = mesh->mFaces[i];
+
+			indices.push_back(face.mIndices[0]);
+			indices.push_back(face.mIndices[1]);
+			indices.push_back(face.mIndices[2]);
 		}
 		// TODO process material
 		if (mesh->mMaterialIndex >= 0)
@@ -63,19 +62,25 @@ namespace Leviathan {
 			
 		}
 
-		BufferLayout layout = BufferLayout(
-			{
-				{ ShaderDataType::Vec3, "a_Position" },
-			});
-		Ref<VertexBuffer> buffer;
-		buffer.reset(VertexBuffer::Create(vertices.data(), sizeof(vertices.data())));
-		meshcomp.mesh->AddVertexBuffer(buffer);
-		buffer->SetLayout(layout);
-		Ref<IndexBuffer> iBuffer;
-		iBuffer.reset(IndexBuffer::Create(indices.data(), sizeof(indices.data())));
-		meshcomp.mesh->SetIndexBuffer(iBuffer);
-		
-		return meshcomp;
+		MeshComponent comp = MeshComponent();
+
+		//Vertex Buffer Creation
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(VertexBuffer::Create(vertices.data(), sizeof(vertices.data())));
+		BufferLayout layout = {
+			{ ShaderDataType::Vec3, "a_Position" }
+		};
+		vertexBuffer->SetLayout(layout);
+		comp.mesh->AddVertexBuffer(vertexBuffer);
+
+		//Index Buffer Creation
+		std::shared_ptr<IndexBuffer> indexBuffer;
+		indexBuffer.reset(IndexBuffer::Create(indices.data(), (uint32_t)indices.size())); 
+		comp.mesh->SetIndexBuffer(indexBuffer);
+		comp.material->Bind();
+
+		//__debugbreak(); //Essentially a breakpoint
+		return comp;
 	}
 
 	 glm::mat4 MeshLoader::toGLMMat4(aiMatrix4x4 m2) {

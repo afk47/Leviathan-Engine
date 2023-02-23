@@ -6,4 +6,4 @@ bin-int/
 #Files
 *.user
 generateProjects.bat
-*.trace
+SandBox/*.json
