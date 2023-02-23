@@ -18,14 +18,12 @@ IncludeDir["glm"] = "Leviathan/vendor/glm/"
 IncludeDir["ImGui"] = "Leviathan/vendor/imgui"
 IncludeDir["entt"] = "Leviathan/vendor/entt/include"
 IncludeDir["stb_image"] = "Leviathan/vendor/stb_image"
-IncludeDir["assimp"] = "Leviathan/vendor/assimp/include"
 
 
 group "Dependencies"
 	include "Leviathan/vendor/GLFW"
 	include "Leviathan/vendor/Glad"
 	include "Leviathan/vendor/imgui"
-	include "Leviathan/vendor/assimp"
 
 group ""
 
@@ -66,8 +64,7 @@ project "Leviathan"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
-		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.assimp}"
+		"%{IncludeDir.stb_image}"
 	}
 	
 	links
@@ -133,8 +130,7 @@ project "SandBox"
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.stb_image}",
-		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.assimp}"
+		"%{IncludeDir.ImGui}"
 	}
 	
 	links

@@ -21,9 +21,9 @@
 
 	
 
-		entity = m_Scene->LoadMeshes("assets/models/teapot.obj", m_Shader);
+		entity = m_Scene->LoadMesh("assets/models/teapot.obj", m_Shader);
 		
-		entity.insert(entity.begin(), m_Scene->CreateEntity("MeshTest"));
+		//entity.insert(entity.begin(), m_Scene->CreateEntity("MeshTest"));
 
 		//		//TEST QUAD USING MANUAL MESH DEFINITION
 		//		MeshComponent comp = MeshComponent();
@@ -59,9 +59,9 @@
 		m_Camera->SetRotation(cam_Rotation);
 		
 		
-		entity.at(0).GetComponent<Leviathan::TransformComponent>().Rotation = m_Rotation;
-		entity.at(0).GetComponent<Leviathan::TransformComponent>().Translation = m_Position;
-		entity.at(0).GetComponent<Leviathan::TransformComponent>().Scale = m_Scale;
+		entity.GetComponent<Leviathan::TransformComponent>().Rotation = m_Rotation;
+		entity.GetComponent<Leviathan::TransformComponent>().Translation = m_Position;
+		entity.GetComponent<Leviathan::TransformComponent>().Scale = m_Scale;
 		m_Scene->OnUpdate(ts);
 	}
 
@@ -90,7 +90,7 @@
 	glm::vec3 cam_Rotation = { 0.0f, 0.0f, 0.0f };
 
 	Leviathan::Scene* m_Scene = new Leviathan::Scene();
-	std::vector<Leviathan::Entity> entity;
+	Leviathan::Entity entity;
 	Leviathan::Entity cameraentity;
 
 	std::shared_ptr<Leviathan::Shader> m_Shader;

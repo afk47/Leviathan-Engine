@@ -7,7 +7,7 @@
 #include "Leviathan/Core/Application.h"
 #include "Leviathan/Core/Layer.h"
 #include "Leviathan/Renderer/Renderer.h"
-#include "Leviathan/Utils/assimp/MeshLoader.h"
+#include "Leviathan/Utils/MeshLoaders/MeshLoader.h"
 
 #include <glm/glm.hpp>
 
@@ -26,23 +26,9 @@ namespace Leviathan {
 
 	}
 
-	Entity Scene::CreateEntity(const std::string& name) {
-
-		LE_PROFILE_FUNCTION();
-		Entity entity = { m_Registry.create(), this };
-		entity.AddComponent<TransformComponent>();
-		auto& tag = entity.AddComponent<TagComponent>();
-		tag.Tag = name.empty() ? "Entity" : name;
-		return entity;
-	}
-
-	void Scene::DestroyEntity(Entity entity) {
-		m_Registry.destroy(entity);
-	}
-
 	void Scene::OnUpdate(Timestep ts) {
 		LE_PROFILE_FUNCTION();
-		//
+	
 		{
 			Renderer::BeginScene();
 
@@ -72,32 +58,44 @@ namespace Leviathan {
 		m_ViewportWidth = width;
 		m_ViewportHeight = height;
 
-		// Resize our non-FixedAspectRatio cameras
-// 		auto view = m_Registry.view<CameraComponent>();
-// 		for (auto entity : view)
-// 		{
-// 			auto& cameraComponent = view.get<CameraComponent>(entity);
-// 			if (!cameraComponent.FixedAspectRatio)
-// 				cameraComponent.Camera.SetViewportSize(width, height);
-// 		}
+	
 	}
 
-	std::vector<Entity> Scene::LoadMeshes(const std::string& path, Ref<Shader> shader) {
+
+
+	Entity Scene::CreateEntity(const std::string& name) {
 
 		LE_PROFILE_FUNCTION();
-		std::vector<Entity> output = std::vector<Entity>();
-		std::vector<MeshComponent> meshes = MeshLoader().LoadMeshes(path);
-		for (auto mesh : meshes) {
-			Entity entity = CreateEntity();
-			mesh.material->SetShader(shader);
-			entity.AddComponent<MeshComponent>(mesh);
-			output.push_back(entity);
-
-		}
-		return output;
+		Entity entity = { m_Registry.create(), this };
+		entity.AddComponent<TransformComponent>();
+		auto& tag = entity.AddComponent<TagComponent>();
+		tag.Tag = name.empty() ? "Entity" : name;
+		return entity;
 	}
 
-	//Methods for when components are added
+	void Scene::DestroyEntity(Entity entity) {
+		m_Registry.destroy(entity);
+	}
+
+	Entity Scene::LoadMesh(const std::string& path, Ref<Shader> shader) {
+
+		LE_PROFILE_FUNCTION();
+		
+		MeshComponent mesh = MeshLoader().LoadMeshes(path);
+
+		//for (MeshComponent mesh : meshes) {
+			Entity entity = CreateEntity("entity");
+			mesh.material->SetShader(shader);
+			mesh.material->Bind();
+			mesh.mesh->Bind();
+			entity.AddComponent<MeshComponent>(mesh);
+			//output.push_back(entity);
+
+	//	}
+		return entity;
+	}
+
+	//Methods for when specific components are added
 	template<typename T>
 	void Scene::OnComponentAdded(Entity entity, T& component)
 	{

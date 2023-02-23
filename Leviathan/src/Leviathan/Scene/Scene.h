@@ -23,7 +23,7 @@ namespace Leviathan {
 		void OnUpdate(Timestep ts);
 		void OnViewportResize(uint32_t width, uint32_t height);
 
-		std::vector<Entity> LoadMeshes(const std::string& path, Ref<Shader> shader);
+		Entity LoadMesh(const std::string& path, Ref<Shader> shader);
 	private:
 		template<typename T>
 		void OnComponentAdded(Entity entity, T& component);

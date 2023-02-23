@@ -61,7 +61,7 @@ namespace Leviathan {
 		}
 		~MeshComponent() {
 			
-			
+			LE_CORE_TRACE("MESH DESTROYED");
 		}
 		
 	};
@@ -77,7 +77,7 @@ namespace Leviathan {
 
 		uint32_t NumChildren()
 		{
-			return Children->size();
+			return (uint32_t)Children->size();
 		}
 	};
 
