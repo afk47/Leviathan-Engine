@@ -55,10 +55,30 @@ namespace Leviathan {
 
 		MeshComponent()
 		{
+			LE_CORE_TRACE("MESH CREATED");
 			mesh.reset(Mesh::Create());
 			material.reset(new Material());
 		}
+		~MeshComponent() {
+			
+			LE_CORE_TRACE("MESH DESTROYED");
+		}
 		
+	};
+
+	struct ParentEntityComponent 
+	{
+		Ref<Entity> Parent;
+	};
+
+	struct ChildrenComponent 
+	{
+		Ref<std::vector<Ref<Entity>>> Children;
+
+		uint32_t NumChildren()
+		{
+			return (uint32_t)Children->size();
+		}
 	};
 
 	struct CameraComponent

@@ -37,6 +37,9 @@
     <Filter Include="src\Leviathan\Utils">
       <UniqueIdentifier>{18788EF2-84D9-6B00-0D47-B2B279A7A2BF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Leviathan\Utils\MeshLoaders">
+      <UniqueIdentifier>{FE089719-6AEC-A559-73EF-D395DF516CAA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -171,7 +174,25 @@
     <ClInclude Include="src\Leviathan\Scene\Scene.h">
       <Filter>src\Leviathan\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\FileUtils.h">
+      <Filter>src\Leviathan\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\MeshLoaders\MeshLoader.h">
+      <Filter>src\Leviathan\Utils\MeshLoaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\MeshLoaders\MeshMath.h">
+      <Filter>src\Leviathan\Utils\MeshLoaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\MeshLoaders\OBJ-Loader.h">
+      <Filter>src\Leviathan\Utils\MeshLoaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\Profiler.h">
+      <Filter>src\Leviathan\Utils</Filter>
+    </ClInclude>
     <ClInclude Include="src\Leviathan\Utils\Timer.h">
+      <Filter>src\Leviathan\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\Timestep.h">
       <Filter>src\Leviathan\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\lpch.h">
@@ -1428,11 +1449,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Leviathan\Utils\Timestep.h">
-      <Filter>src\Leviathan\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Leviathan\Utils\Profiler.h" />
-    <ClInclude Include="src\Leviathan\Utils\FileUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Leviathan\Core\Application.cpp">
@@ -1503,6 +1519,9 @@
     </ClCompile>
     <ClCompile Include="src\Leviathan\Scene\Scene.cpp">
       <Filter>src\Leviathan\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Leviathan\Utils\MeshLoaders\MeshLoader.cpp">
+      <Filter>src\Leviathan\Utils\MeshLoaders</Filter>
     </ClCompile>
     <ClCompile Include="src\lpch.cpp">
       <Filter>src</Filter>

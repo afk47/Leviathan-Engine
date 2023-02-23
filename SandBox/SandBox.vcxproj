@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Leviathan\vendor\spdlog\include;..\Leviathan\src;..\Leviathan\vendor;..\Leviathan\vendor\Glad\include;..\Leviathan\vendor\glm;..\Leviathan\vendor\entt\include;..\Leviathan\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Leviathan\vendor\spdlog\include;..\Leviathan\src;..\Leviathan\vendor;..\Leviathan\vendor\Glad\include;..\Leviathan\vendor\glm;..\Leviathan\vendor\entt\include;..\Leviathan\vendor\stb_image;..\Leviathan\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Leviathan\vendor\spdlog\include;..\Leviathan\src;..\Leviathan\vendor;..\Leviathan\vendor\Glad\include;..\Leviathan\vendor\glm;..\Leviathan\vendor\entt\include;..\Leviathan\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Leviathan\vendor\spdlog\include;..\Leviathan\src;..\Leviathan\vendor;..\Leviathan\vendor\Glad\include;..\Leviathan\vendor\glm;..\Leviathan\vendor\entt\include;..\Leviathan\vendor\stb_image;..\Leviathan\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,7 +119,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>RE_PLATFORM_WINDOWS;RE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Leviathan\vendor\spdlog\include;..\Leviathan\src;..\Leviathan\vendor;..\Leviathan\vendor\Glad\include;..\Leviathan\vendor\glm;..\Leviathan\vendor\entt\include;..\Leviathan\vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Leviathan\vendor\spdlog\include;..\Leviathan\src;..\Leviathan\vendor;..\Leviathan\vendor\Glad\include;..\Leviathan\vendor\glm;..\Leviathan\vendor\entt\include;..\Leviathan\vendor\stb_image;..\Leviathan\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

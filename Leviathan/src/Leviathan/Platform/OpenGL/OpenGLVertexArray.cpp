@@ -32,6 +32,7 @@ namespace Leviathan
 
 	OpenGLVertexArray::~OpenGLVertexArray()
 	{
+		LE_CORE_INFO("MESH DELETED");
 		glDeleteVertexArrays(1, &m_RendererID);
 	}
 
