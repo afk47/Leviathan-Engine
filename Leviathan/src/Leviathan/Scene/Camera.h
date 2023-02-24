@@ -1,6 +1,7 @@
 #pragma once
 #include "Leviathan/Events/Event.h"
 #include "Leviathan/Events/ApplicationEvent.h"
+#include "Leviathan/Events/KeyEvent.h"
 #include "Leviathan/Utils/Timestep.h"
 #include <glm/glm.hpp>
 
@@ -69,7 +70,7 @@ namespace Leviathan {
 
 	private:
 		bool OnResize(WindowResizeEvent& e);
-
+		
 	private:
 		bool update = false;
 		glm::mat4 m_ProjectionMatrix = glm::mat4(1.0f);

@@ -43,6 +43,9 @@
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\JSON">
+      <UniqueIdentifier>{DC3A69C1-48F0-E1B6-D1E4-DB8D3D99D8BA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor\glm">
       <UniqueIdentifier>{829FC5A8-6E57-07F6-D75E-E051C335A2E6}</UniqueIdentifier>
     </Filter>
@@ -177,6 +180,9 @@
     <ClInclude Include="src\Leviathan\Utils\FileUtils.h">
       <Filter>src\Leviathan\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="src\Leviathan\Utils\MeshLoaders\GLTF-Loader.h">
+      <Filter>src\Leviathan\Utils\MeshLoaders</Filter>
+    </ClInclude>
     <ClInclude Include="src\Leviathan\Utils\MeshLoaders\MeshLoader.h">
       <Filter>src\Leviathan\Utils\MeshLoaders</Filter>
     </ClInclude>
@@ -197,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="src\lpch.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\JSON\json.hpp">
+      <Filter>vendor\JSON</Filter>
     </ClInclude>
     <ClInclude Include="vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1447,6 +1456,9 @@
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
     <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image_write.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
   </ItemGroup>

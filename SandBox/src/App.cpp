@@ -1,7 +1,6 @@
 	#include <Leviathan.h>
 
-	#include "imgui.h"
-
+#include "imgui.h"
 	class ExampleLayer : public Leviathan::Layer
 	{
 	public:
@@ -21,40 +20,23 @@
 
 	
 
-		entity = m_Scene->LoadMesh("assets/models/teapot.obj", m_Shader);
-		
-		//entity.insert(entity.begin(), m_Scene->CreateEntity("MeshTest"));
-
-		//		//TEST QUAD USING MANUAL MESH DEFINITION
-		//		MeshComponent comp = MeshComponent();
-		//
-		//		float vertices[3 * 4] = {
-		//			-0.5f, -0.5f, 0.0f,
-		//			 0.5f, -0.5f, 0.0f,
-		//			 0.5f,  0.5f, 0.0f,
-		//			-0.5f,  0.5f, 0.0f,
-		//		};
-		//		std::shared_ptr<VertexBuffer> vertexBuffer;
-		//		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		//		BufferLayout layout = {
-		//			{ ShaderDataType::Vec3, "a_Position" }
-		//		};
-		//		vertexBuffer->SetLayout(layout);
-		//		comp.mesh->AddVertexBuffer(vertexBuffer);
-		//		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		//		std::shared_ptr<IndexBuffer> squareIB;
-		//		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-		//		comp.mesh->SetIndexBuffer(squareIB);
-		//		comp.material->SetShader(m_Shader2);
-		//		comp.material->Bind();
-		//
-		//		entity.at(0).AddComponent<MeshComponent>(comp);
-		
+		entity = m_Scene->LoadMesh("assets/models/teapot2.obj", m_Shader2);
 		
 	}
 
 	void OnUpdate(Leviathan::Timestep ts) override
 	{
+		Leviathan::Input::LockMouse(cameraIsLocked);
+
+
+		CameraControl(ts);
+
+		auto[mX,mY] = Leviathan::Input::GetMousePos();
+		
+		cam_Rotation += glm::vec3({mouseY-mY, mouseX-mX, 0}) * .004f;
+		mouseX = mX;
+		mouseY = mY;
+
 		m_Camera->SetPosition(cam_Position);
 		m_Camera->SetRotation(cam_Rotation);
 		
@@ -64,6 +46,75 @@
 		entity.GetComponent<Leviathan::TransformComponent>().Scale = m_Scale;
 		m_Scene->OnUpdate(ts);
 	}
+
+	void CameraControl(Leviathan::Timestep ts)
+	{
+
+		glm::vec3 forward = glm::vec3(0);
+		forward.x = cos(cam_Rotation.x) * sin(cam_Rotation.y);
+		forward.y = -sin(cam_Rotation.x);
+		forward.z = cos(cam_Rotation.x) * cos(cam_Rotation.y);
+
+		glm::vec3 right = glm::vec3(0);
+		right.x = cos(cam_Rotation.y);
+		right.y = 0;
+		right.z = -sin(cam_Rotation.y);
+
+		float speed = .1;
+
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_W))
+		{
+			cam_Position -= ts.GetMilliseconds() * (forward * speed);
+		}
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_S))
+		{
+			cam_Position += ts.GetMilliseconds() * (forward * speed);
+		}
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_D))
+		{
+			cam_Position += ts.GetMilliseconds() * (right * speed);
+		}
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_A))
+		{
+			cam_Position -= ts.GetMilliseconds() * (right * speed);
+		}
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_LeftControl))
+		{
+			cam_Position += ts.GetMilliseconds() * (glm::vec3({ 0, -1, 0 }) * speed);
+		}
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_Space))
+		{
+			cam_Position += ts.GetMilliseconds() * (glm::vec3({ 0, 1, 0 }) * speed);
+		}
+
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_Left))
+		{
+			cam_Rotation += ts.GetMilliseconds() * (glm::vec3({ 0, 1, 0 }) * .004f);
+		}
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_Right))
+		{
+			cam_Rotation += ts.GetMilliseconds() * (glm::vec3({ 0, -1, 0 }) * .004f);
+		}
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_Up))
+		{
+			cam_Rotation += ts.GetMilliseconds() * (glm::vec3({ 1, 0, 0 }) * .004f);
+		}
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_Down))
+		{
+			cam_Rotation += ts.GetMilliseconds() * (glm::vec3({ -1, 0, 0 }) * .004f);
+		}
+
+		if (Leviathan::Input::IsKeyPressed(Leviathan::KeyCodes::Key_Escape))
+		{
+			cameraIsLocked = false;
+		}
+
+		if (Leviathan::Input::IsMouseButtonPressed(Leviathan::MouseCodes::MouseButton0))
+		{
+			cameraIsLocked = true;
+		}
+	}
+
 
 	virtual void OnImGuiRender(Leviathan::Timestep ts) override
 	{
@@ -79,15 +130,46 @@
 		ImGui::End();
 		ImGui::End();
 	}
+	bool OnKeyPressed(Leviathan::KeyPressedEvent& e)
+	{
+		
+		if (e.GetKeyCode() == Leviathan::KeyCodes::Key_A)
+		{
+			cam_Position += glm::vec3({ -.1, 0, 0 });
+		}
+		if (e.GetKeyCode() == Leviathan::KeyCodes::Key_D)
+		{
+			cam_Position += glm::vec3({ .1, 0, 0 });
+		}
+		if (e.GetKeyCode() == Leviathan::KeyCodes::Key_W)
+		{
+			cam_Position += glm::vec3({ 0, 0, -.1 });
+		}
+		if (e.GetKeyCode() == Leviathan::KeyCodes::Key_S)
+		{
+			cam_Position += glm::vec3({ 0, 0, .1 });
+		}
+
+		LE_CORE_INFO("KEY - {0}", e.GetKeyCode());
+		return false;
+	}
 
 	void OnEvent(Leviathan::Event& event) override
 	{
 		
+
 	}
+
+	
 	private:
 	Leviathan::PerspectiveCamera* m_Camera;
 	glm::vec3 cam_Position = { 0.0f, 0.0f, 0.0f };
 	glm::vec3 cam_Rotation = { 0.0f, 0.0f, 0.0f };
+
+	float mouseX = 0;
+	float mouseY = 0;
+
+	bool cameraIsLocked = true;
 
 	Leviathan::Scene* m_Scene = new Leviathan::Scene();
 	Leviathan::Entity entity;

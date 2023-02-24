@@ -2,7 +2,9 @@
 #include "WindowsInput.h"
 
 #include "Leviathan/Core/Application.h"
+#include <Glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
 
 namespace Leviathan {
 
@@ -32,6 +34,16 @@ namespace Leviathan {
 		return {(float) xpos, (float) ypos};
 	}
 
-	
+	void WindowsInput::LockMouseImpl(bool lock)
+	{
+		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
+		if (lock) {
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		}
+		else {
+
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+		}
+	}
 
 }

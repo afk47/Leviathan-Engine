@@ -71,46 +71,7 @@ namespace objl
 		glm::vec2 TextureCoordinate;
 	};
 
-	struct Material
-	{
-		Material()
-		{
-			name;
-			Ns = 0.0f;
-			Ni = 0.0f;
-			d = 0.0f;
-			illum = 0;
-		}
-
-		// Material Name
-		std::string name;
-		// Ambient Color
-		glm::vec3 Ka;
-		// Diffuse Color
-		glm::vec3 Kd;
-		// Specular Color
-		glm::vec3 Ks;
-		// Specular Exponent
-		float Ns;
-		// Optical Density
-		float Ni;
-		// Dissolve
-		float d;
-		// Illumination
-		int illum;
-		// Ambient Texture Map
-		std::string map_Ka;
-		// Diffuse Texture Map
-		std::string map_Kd;
-		// Specular Texture Map
-		std::string map_Ks;
-		// Specular Hightlight Map
-		std::string map_Ns;
-		// Alpha Texture Map
-		std::string map_d;
-		// Bump Map
-		std::string map_bump;
-	};
+	
 
 	// Structure: Mesh
 	//
@@ -137,7 +98,7 @@ namespace objl
 		std::vector<unsigned int> Indices;
 
 		// Material
-		Material MeshMaterial;
+		Leviathan::MTL MeshMaterial;
 	};
 
 
@@ -636,12 +597,16 @@ namespace objl
 				vertices.push_back(v.Position.x);
 				vertices.push_back(v.Position.y);
 				vertices.push_back(v.Position.z);
+				vertices.push_back(v.Normal.x);
+				vertices.push_back(v.Normal.y);
+				vertices.push_back(v.Normal.z);
 			}
 
 			std::shared_ptr<Leviathan::VertexBuffer> vertexBuffer;
 			vertexBuffer.reset(Leviathan::VertexBuffer::Create(vertices.data(), vertices.size() * 4));
 			Leviathan::BufferLayout layout = {
-				{Leviathan::ShaderDataType::Vec3, "a_Position" }
+				{Leviathan::ShaderDataType::Vec3, "a_Position" },
+				{Leviathan::ShaderDataType::Vec3, "a_Normal" }
 			};
 			vertexBuffer->SetLayout(layout);
 			comp.mesh->AddVertexBuffer(vertexBuffer);
@@ -649,6 +614,9 @@ namespace objl
 			std::shared_ptr<Leviathan::IndexBuffer> squareIB;
 			squareIB.reset(Leviathan::IndexBuffer::Create(squareIndices, LoadedIndices.size()));
 			comp.mesh->SetIndexBuffer(squareIB);
+			if (LoadedMaterials.size() > 0) {
+				comp.material->SetMTL(std::make_shared<Leviathan::MTL>(LoadedMaterials.at(0)));
+			}
 			comp.material->Bind();
 
 			return comp;
@@ -661,7 +629,7 @@ namespace objl
 		// Loaded Index Positions
 		std::vector<unsigned int> LoadedIndices;
 		// Loaded Material Objects
-		std::vector<Material> LoadedMaterials;
+		std::vector<Leviathan::MTL> LoadedMaterials;
 
 	private:
 		// Generate vertices from a list of positions, 
@@ -957,7 +925,7 @@ namespace objl
 			if (!file.is_open())
 				return false;
 
-			Material tempMaterial;
+			Leviathan::MTL tempMaterial;
 
 			bool listening = false;
 
@@ -989,7 +957,7 @@ namespace objl
 						LoadedMaterials.push_back(tempMaterial);
 
 						// Clear Loaded Material
-						tempMaterial = Material();
+						tempMaterial = Leviathan::MTL();
 
 						if (curline.size() > 7)
 						{
