@@ -18,6 +18,7 @@ IncludeDir["glm"] = "Leviathan/vendor/glm/"
 IncludeDir["ImGui"] = "Leviathan/vendor/imgui"
 IncludeDir["entt"] = "Leviathan/vendor/entt/include"
 IncludeDir["stb_image"] = "Leviathan/vendor/stb_image"
+IncludeDir["JSON"] = "Leviathan/vendor/JSON"
 
 
 group "Dependencies"
@@ -47,6 +48,7 @@ project "Leviathan"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/JSON/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
@@ -64,6 +66,7 @@ project "Leviathan"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
+		"%{IncludeDir.JSON}",
 		"%{IncludeDir.stb_image}"
 	}
 	
@@ -73,7 +76,6 @@ project "Leviathan"
 		"GLFW",
 		"Glad",
 		"ImGui",
-		"assimp",
 		"opengl32.lib"
 	}
 

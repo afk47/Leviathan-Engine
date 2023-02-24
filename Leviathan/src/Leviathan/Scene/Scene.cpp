@@ -43,6 +43,20 @@ namespace Leviathan {
 				meshcomp.material->Bind();
 				meshcomp.material->Set("transformMatrix", transform.GetTransform());
 				meshcomp.material->Set("projectionMatrix", m_Camera->GetViewProjectionMatrix());
+
+				if (meshcomp.material->HasMTL()) {
+					Ref<MTL> mtl = meshcomp.material->GetMTL();
+
+					meshcomp.material->Set("material.ambient",mtl->Ka);
+					meshcomp.material->Set("material.diffuse",mtl->Kd);
+					meshcomp.material->Set("material.specular", mtl->Ks);
+					meshcomp.material->Set("material.shininess", mtl->Ns);
+					meshcomp.material->Set("material.Ni", mtl->Ni);
+					meshcomp.material->Set("material.d", mtl->d);
+					meshcomp.material->Set("material.illum", mtl->illum);
+				}
+
+
 				Renderer::Submit(meshcomp.material, meshcomp.mesh);
 				
 				debugLayer->vertices += meshcomp.mesh->GetIndexBuffer()->GetCount();

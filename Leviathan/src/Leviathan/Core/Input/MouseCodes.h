@@ -5,8 +5,7 @@ namespace Leviathan
 {
 	using MouseCode = uint16_t;
 
-	namespace Mouse
-	{
+	
 		enum MouseCodes : MouseCode
 		{
 			// From glfw3.h
@@ -24,5 +23,5 @@ namespace Leviathan
 			MouseButtonRight = MouseButton1,
 			MouseButtonMiddle = MouseButton2
 		};
-	}
+	
 }

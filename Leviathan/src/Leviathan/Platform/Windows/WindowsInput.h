@@ -10,6 +10,7 @@ namespace Leviathan {
 		virtual bool IsKeyPressedImpl(int keycode) override;
 		virtual bool IsMouseButtonPressedImpl(int button) override;
 		virtual std::pair<float, float> GetMousePosImpl() override;
+		virtual void LockMouseImpl(bool lock) override;
 	};
 
 

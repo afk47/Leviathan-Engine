@@ -1,6 +1,7 @@
 #include "lpch.h"
 
 #include "Camera.h"
+#include "Leviathan/Core/Input/KeyCodes.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtc/matrix_transform.hpp>
@@ -57,9 +58,16 @@ namespace Leviathan {
 
 	void PerspectiveCamera::OnEvent(Event& e)
 	{
+		
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowResizeEvent>(LE_BIND_EVENT_FN(PerspectiveCamera::OnResize));
+
+
 	}
+
+
+	
+
 
 	bool PerspectiveCamera::OnResize(WindowResizeEvent& e) 
 	{
