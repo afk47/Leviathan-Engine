@@ -29,3 +29,7 @@ Roadmap -
 	- Raytracing
 	- Material (ambient diffuse specular shininess)
 - Text rendering
+
+
+============
+# Engine development on hiatus due to development of Unannounced game project
