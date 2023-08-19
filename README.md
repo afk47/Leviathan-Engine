@@ -32,4 +32,5 @@ Roadmap -
 
 
 ============
-# Engine development on hiatus due to development of Unannounced game project
+# Engine development on hiatus due to other projects
+
