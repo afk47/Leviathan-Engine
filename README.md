@@ -1,3 +1,4 @@
+
 # Leviathan Engine
 C++ Game Engine
 
@@ -32,5 +33,5 @@ Roadmap -
 
 
 ============
-# Engine development on hiatus due to other projects
+# Project abandoned, may rewrite in future if i have a project that I want to build with the engine
 

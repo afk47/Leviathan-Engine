@@ -63,7 +63,7 @@ struct Material {
 
 layout(location = 0) out vec4 color;
 uniform Material material;
-
+uniform vec3 viewPos;
 in mat4 transform;
 in vec3 v_Position;
 in vec3 v_Normal;
@@ -72,12 +72,12 @@ in vec3 v_Normal;
 void main()
 {
 	
-	vec3 lightPos = vec3(0,1,0);
+	vec3 lightPos = vec3(20,20,0);
 	vec3 lightColor = vec3(1);
-	vec3 viewPos = vec3(0,0,0);
+	
 
 	// ambient
-    vec3 ambient = lightColor * vec3(.2);
+    vec3 ambient = material.diffuse * vec3(0.2);
   	
     // diffuse 
     vec3 norm = normalize(v_Normal);

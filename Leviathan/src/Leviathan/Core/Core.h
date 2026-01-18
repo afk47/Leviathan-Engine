@@ -28,8 +28,6 @@
 	#endif
 #elif __ANDROID__
 	#error "Platform Not Supported"
-	// Below __linux__ check should be enough to handle Android,
-	// but something may be unique to Android.
 #elif __linux__
 	#error "Platform Not Supported"// linux
 #elif __unix__ // all unices not caught above

@@ -12,16 +12,17 @@
 		LE_PROFILE_SCOPE("INIT LAYER");
 
 		m_Shader.reset(Shader::Create("assets/shaders/solid.glsl"));
-
-		m_Shader2.reset(Shader::Create("assets/shaders/solid2.glsl"));
-
+		m_Texture = std::make_shared<Texture>("assets/textures/default.png");
+		m_Shader2.reset(Shader::Create("assets/shaders/Textureshader.glsl"));
+		
 		m_Camera = new PerspectiveCamera(90.0f, 16 / 9, .001f, 9999.9f);
 		m_Scene->SetCamera(m_Camera);
 
 	
 
-		entity = m_Scene->LoadMesh("assets/models/teapot2.obj", m_Shader2);
-		
+		entity = m_Scene->LoadMesh("assets/models/teapot.obj", m_Shader2);
+		entity.GetComponent<MeshComponent>().material->Set("u_Texture", 0);
+		entity.GetComponent<MeshComponent>().material->SetTexture(m_Texture);
 	}
 
 	void OnUpdate(Leviathan::Timestep ts) override

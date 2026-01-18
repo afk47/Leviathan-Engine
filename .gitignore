@@ -4,6 +4,7 @@ bin/
 bin-int/
 
 #Files
+SandBox/assets/**
 *.user
 generateProjects.bat
 SandBox/*.json

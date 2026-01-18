@@ -43,6 +43,7 @@ namespace Leviathan {
 				meshcomp.material->Bind();
 				meshcomp.material->Set("transformMatrix", transform.GetTransform());
 				meshcomp.material->Set("projectionMatrix", m_Camera->GetViewProjectionMatrix());
+				meshcomp.material->Set("viewPos", m_Camera->GetPosition());
 
 				if (meshcomp.material->HasMTL()) {
 					Ref<MTL> mtl = meshcomp.material->GetMTL();
